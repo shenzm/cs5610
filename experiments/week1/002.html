@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week1-Exp2</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week1 - Experiment2</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>HTML5 - New Form Elements</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">This experiment go through some useful new form elements in HTML5</div>
+        </div>
+        <div class="item">
+            <h2>Sub-experiments:</h2>
+            <div class="item">
+                <p>
+                    1. This is a &lt;datalist&gt;, which specifies a list of
+                    pre-defined options for an &lt;input&gt; elementis.
+                </p>
+                <div class="code-box">
+                    <label for="input-exp">Input:</label>
+                    <input id="input-exp" list="course" />
+                    <datalist id="course">
+                        <option>Web Development</option>
+                        <option>Information Retrieval</option>
+                        <option>Network Security</option>
+                    </datalist>
+                </div>
+                <p>- Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;input list="course"/&gt;
+&lt;datalist id="course"&gt;
+    &lt;option&gt;Web Development&lt;/option&gt;
+    &lt;option&gt;Information Retrieval&lt;/option&gt;
+    &lt;option&gt;Network Security&lt;/option&gt;
+&lt;/datalist&gt;</pre>
+                </div>
+                <hr />
+            </div>
+            <div class="item">
+                <p>
+                    2. This is a &lt;output&gt;, that represents the result of drag bar.
+                </p>
+                <form class="code-box" oninput="display.value = parseInt(volume.value)">
+                    <label for="volumn">Volume:</label>
+                    <input name="volume" type="range" value="0" />
+                    <label for="volumn">Output: </label>
+                    <output name="display">0</output>
+                </form>
+                <p>- Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;form oninput="display.value = parseInt(volume.value)"&gt;
+    &lt;label for="volumn"&gt;Volume:&lt;/label&gt; 
+    &lt;input name="volume" type="range" value="0"/&gt;
+    &lt;label for="volumn"&gt;Output: &lt;/label&gt; 
+    &lt;output name="display"&gt;0&lt;/output&gt; 
+&lt;/form&gt;</pre>
+                </div>
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week1/002.html">002.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/styles.css">styles.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.w3schools.com/html/html5_new_elements.asp">
+                        W3Cschools HTML5
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.textfixer.com/html/convert-word-to-html.php">
+                        Word to HTML Converter
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

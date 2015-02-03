@@ -1,0 +1,3 @@
+﻿../story/links.htm?../experiments/link.txt        Experiment List
+../story/index.htm?../experiments/week1/          WEEK 1
+../story/index.htm?../experiments/week2/          WEEK 2

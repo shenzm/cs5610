@@ -1,0 +1,127 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+}
+
+figure {
+    padding: 0px;
+    margin: 0px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #888888;
+    padding: 10px 0px;
+}
+
+h1, h2 {
+    font: Verdana bold;
+    margin: 0px;
+}
+
+
+h1 {
+	font-size: 24px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+h2 {
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.experiment-banner {
+	font-family: Georgia;
+	font-size: 28px;
+    font-weight: bold;
+    color: #666666;
+    background-color: #cccccc;
+    padding: 10px;
+}
+
+.experiment-nav {
+    font-family: Georgia;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #666666;
+    padding: 10px;
+}
+
+.experiment-nav a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.experiment-nav a:hover {
+    background-color: #444444;
+}
+
+.experiment-nav a:visited {
+    color: #ffffff;
+}
+
+.experiment-contents, .experiment-link {
+    font-family: Verdana;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.experiment-contents .item {
+    margin: 10px;
+}
+
+.experiment-link a:link {
+    text-decoration: none;
+    color: #444444;
+}
+
+.experiment-link a:hover {
+    text-decoration: underline;
+}
+
+.experiment-link a:visited {
+    color: #888888;
+}
+
+.box {
+    overflow: auto;
+    width: 100%;
+    min-height: 200px;
+    max-height: 500px;
+}
+
+.code-box {
+    padding: 10px;
+    border: solid 1px #cccccc;
+    background-color: #eeeeee;
+    font-family: 'Courier New';
+    overflow: auto;
+    max-height: 500px;
+}
+
+.code-box pre {
+    font-family: 'Courier New';
+    margin: 0px;
+    overflow: visible;
+}
+
+table {
+    border: 1px solid #808080;
+}
+
+table tr {
+    border: 1px solid #808080;
+}
+
+table tr th, table tr td {
+    padding: 5px 10px;
+    border-left: 1px dotted #808080;
+}

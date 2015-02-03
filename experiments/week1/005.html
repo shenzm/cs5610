@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week1-Exp5</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+<body>
+    <header class="experiment-banner">
+        <div class="container">
+                Week1 - Experiment5
+        </div>
+    </header>
+    <nav class="experiment-nav">
+        <div class="container">
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </div>
+    </nav>
+    <div class="experiment-contents">
+        <div class="container">
+            <h1>CSS - Responsive Web Page</h1>
+            <div class="item">
+                <h2>Description: </h2>
+                <div class="item">
+                    This web page "005.html" is the experiment itself. It applys a new CSS style file "responsive.css".
+                </div>
+            </div>
+            <div class="item">
+                <h2>Experiment Detail:</h2>
+                <div class="item">
+                    <p>
+                        Basic concept is the adjust the CSS rules according to the browser's window size.
+                        The following difference can be shown if adjust the width of the window:
+                    <p>(1) If window-width > 960: white backgroud color + largest font size + largest padding + align center</p>
+                    <p>(2) If window-width in range 500~960: lightcyan backgroud color + smaller font size + smaller padding</p>
+                    <p>(2) If window-width < 500: lightblue backgroud color + smallest font size + smallest padding</p>
+                    <div class="code-box">
+                        <img src="../../images/week1/three-size.png" />
+                    </div>
+
+                    <p>- Code Snippet:</p>
+                    <p> Basic approach is to make use of "@media screen" property to define different css rule under different condition.</p>
+                    <div class="code-box">
+                        <pre>@media screen and (max-width: 400px) {
+    .container {
+        width: inherit;
+    }
+    .experiment-contents {
+        background-color: lightblue;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 960px) {
+    .container {
+        width: inherit;
+    }
+    .experiment-contents {
+        background-color: lightcyan;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .container {
+        width: 900px;
+        margin: auto;
+    }
+}</pre>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="experiment-link" id="source-code-link">
+                <h2>Source Code Links: </h2>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week1/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/styles.css">styles.css</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week1/css/responsive.css">responsive.css</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="experiment-link" id="reference-link">
+                <h2>Reference Links: </h2>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://www.w3schools.com/css/default.asp">
+                            W3Cschools CSS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

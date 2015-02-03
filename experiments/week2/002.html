@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week2-Exp2</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week2 - Experiment2</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>Bootstrap - Carousel</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses the Bootstrap Framework and some customized
+                css to implement a carousel uilitliy than can display multiple
+                images. 
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of pre-defined css class and javascript in 
+                    Bootstrap framework, by including Bootstrap from a CDN, and adjust
+                    the position and size of it in customized css file to implemet a 
+                    slideshows like feature for series of images.
+                    So the content won't be cover by the nav bar.
+                    It has the following features:
+                </p>
+                <p>
+                    1.Change images automatically after some time slot.
+                </p>
+                <p>
+                    2. User can use the left block and right block which include arrow icon to change images.
+                </p>
+                <iframe class="box" style="width: 650px; height: 420px;" src="carousel.html"></iframe>
+                <p>- Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;div id="myCarousel" class="carousel slide" data-ride="carousel" &gt;
+    &lt;ol class="carousel-indicators"&gt; 
+        &lt;li data-target="#myCarousel" data-slide-to="0" &gt;&lt;/li&gt;
+        &lt;li data-target="#myCarousel" data-slide-to="1" &gt;&lt;/li&gt;
+        &lt;li data-target="#myCarousel" data-slide-to="2" &gt;&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;div class="carousel-inner" role="listbox"&gt; 
+        &lt;div class="item active"&gt; 
+            &lt;img src="../../images/week2/kobe1.jpg" alt="First slide"&gt;
+        &lt;/div&gt; 
+        &lt;div class="item"&gt; 
+            &lt;img src="../../images/week2/kobe2.jpg" alt="Second slide"&gt;
+        &lt;/div&gt; 
+        &lt;div class="item"&gt;
+            &lt;img src="../../images/week2/kobe3.jpg" alt="Third slide"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt; 
+    &lt;a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"&gt; 
+        &lt;span class="glyphicon glyphicon-chevron-left" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;/a&gt; 
+    &lt;a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"&gt;
+        &lt;span class="glyphicon glyphicon-chevron-right" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;/a&gt; 
+&lt;/div&gt;</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/002.html">002.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/carousel.html">carousel.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/css/carousel.css">carousel.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.w3schools.com/bootstrap/bootstrap_carousel.asp">
+                        W3Cschools Bootstrap Carousel
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://getbootstrap.com/examples/carousel/">
+                        Bootstrap Getting Started - Carousel Example
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week2-Exp3</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week2 - Experiment3</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>CSS - Grid System</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment creates a grid system by imitating grid system of 
+                Bootstrap Framework. Basic idea is to define different versions of
+                "col-1" to "col-12" for various screen size. These "col" class are prefixed
+                with "xs"(extra small), "sm"(small), "md"(medium),"lg"(large), which means
+                their rules are going to apply on certain screen size. 
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Follows is the experiment itself, which we use an iframe to display.
+                    You can check that different styles applied according to your browser's width.
+                    Following are the rules for different class prefix
+                </p>
+                <table>
+                    <thead>
+                        <tr style="border-bottom: 1px double #808080">
+                            <th>Prefix</th>
+                            <th>Background Color</th>
+                            <th>Division</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>zhenmins-col-xs-</td>
+                            <td style="background-color: lightyellow">lightyellow</td>
+                            <td>12:12:12</td>
+                        </tr>
+                        <tr>
+                            <td>zhenmins-col-sm-</td>
+                            <td style="background-color: lightsalmon">lightsalmon</td>
+                            <td>4:4:4</td>
+                        </tr>
+                        <tr>
+                            <td>zhenmins-col-md-</td>
+                            <td style="background-color: lightblue">lightblue</td>
+                            <td>3:6:3</td>
+                        </tr>
+                        <tr>
+                            <td>zhenmins-col-lg-</td>
+                            <td style="background-color: lightgreen">lightgreen</td>
+                            <td>2:8:2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <div id="framewrap">
+                    <iframe class="box" src="grid-system.html"></iframe>
+                </div>
+                <p>- Code Snippet:</p>
+                <p> 
+                    Use @media selector and condition (min-width) to make the css rule applys on
+                    different width of the browser.
+                </p>
+                <div class="code-box">
+                    <pre>.zhenmins-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 768px) {
+    .zhenmins-container {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .zhenmins-container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .zhenmins-container {
+        width: 1170px;
+    }
+}
+
+.zhenmins-col-xs-12 {
+    width: 100%;
+    background-color: lightyellow;
+}
+@media (min-width: 768px) {  
+    .zhenmins-col-sm-12 {
+        background-color: lightsalmon;
+        width: 100%;
+    }
+}
+@media (min-width: 992px) {  
+    .zhenmins-col-md-12 {
+        background-color: lightblue;
+        width: 100%;
+    }
+}
+@media (min-width: 1200px) {  
+    .zhenmins-col-lg-12 {
+        background-color: lightgreen;
+        width: 100%;
+    }
+}
+</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/003.html">003.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/grid-system.html">grid-system.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/css/grid-system.css">grid-system.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://getbootstrap.com/css/#grid">
+                        Bootstrap CSS Grid System
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

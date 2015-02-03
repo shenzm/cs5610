@@ -1,0 +1,7 @@
+﻿  !title=Experiments List
+  !pagetitle=Experiments List
+  !comment=Links for each experiments:
+  !hr
+
+../story/index.htm?../experiments/week1/        WEEK 1: HTML5, CSS and Responsive Web Page
+../story/index.htm?../experiments/week2/        WEEK 2: Bootstrap try out

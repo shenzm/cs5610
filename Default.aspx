@@ -1,155 +1,85 @@
 ﻿<%@ Page Language="C#" %>
 
 <script runat="server">
-    <%-- This demo page has no server side script --%>
+    // This demo page has no server side script
 </script>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset='utf-8' />
-
-<title>Demo Home Page</title>
-
-<style type="text/css">
-    ul.master_navigation
-    {
-        font-size: 100%;
-        font-weight: bold;
-        text-align: center;
-        list-style: none;
-        margin: 0.5em 0;
-        padding: 0;
-    }
-
-    ul.master_navigation li
-    {
-        display: inline-block;
-        padding: 0 0.5%;
-    }
-
-    a
-    {
-        color: #08f;
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    a:visited
-    {
-        color: #88f;
-    }
-
-    a:hover
-    {
-        color: #f00;
-    }
-
-    p
-    {
-        text-align: justify;
-    }
-</style>
-
-<style type="text/css" media="screen">
-    body {
-        width:900px;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .pad {
-        padding: 10px;
-    }
-</style>
-
+    <title>Demo Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="experiments/home/css/normalize.css" />
+    <link rel="stylesheet" href="experiments/home/css/home.css"/>
 </head>
-
 <body>
+    <nav class="zhenmins-nav zhenmins-nav-fixed-top">
+        <div class="zhenmins-container">
+            <div class="zhenmins-nav-header">
+                <a class="zhenmins-nav-redirect" href="#home-nav-bottom">Navs</a>
+                <a class="zhenmins-nav-brand" href="#">ZhenminG's</a>
+            </div>
+            <div class="zhenmins-nav-body" id="home-nav-body">
+                <ul class="nav-list">
+                    <li><a href="story/index.htm?../experiments/" target="_blank">Experiements</a></li>
+                    <li><a href="#" target="_blank">Project</a></li>
+                    <li><a href="#" target="_blank">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<div class="pad">
-
-<form id="form1" runat="server">
-
-<div>
-
-<ul class="master_navigation">
-    <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
-    <li><a href="statistics/" target="_blank">Statistics</a></li>
-    <li><a href="source/" target="_blank">Source</a></li>
-    <li><a href="search/" target="_blank">Search</a></li>
-    <li><a href="searchtree/" target="_blank">SearchTree</a></li>
-    <li><a href="textview/" target="_blank">TextView</a></li>
-    <li><a href="filelist.aspx" target="_blank">FileList</a></li>
-    <li><a href="autofile.aspx" target="_blank">AutoFile</a></li>
-    <li><a href="images/autoimage.aspx" target="_blank">Images</a></li>
-    <li><a href="blog/" target="_blank">Blog</a></li>
-</ul>
-
-<hr />
-
-<p>
-    <b>This demo page shows the navigation links that should appear
-    on the home page.</b>
-    It is not necessary that these links be at the top of the page
-    but they should be displayed nicely and be easy to find.  You
-    may alter the CSS on the page to change the placement and the
-    size of the links.
-</p>
-
-<hr />
-
-<p>
-    The home page may show some interesting content but its main
-    purpose should be to <i>provide navigation</i> to other pages
-    on your site.
-</p>
-
-<hr />
-
-<p>
-    It would be helpful if your home page shows your name and a
-    photo of yourself.  This will help us to get to know you. 
-</p>
-    
-<hr />
-
-<p>
-Here is a link to the
-<a href="story/index.htm" target="_blank">Story Utility</a>
-on this site so that you may explore this tool.
-</p>
-
-<p>
-Here is a link to the
-<a href="http://www.northeastern.edu/rasala/webstories.htm"
-        target="_blank">Web Development Stories</a>
-so that you may see a good collection of online documentation.
-</p>
-
-<p>
-This provides a model for using stories for documentation and
-for collections of experiments.
-</p>
-
-<hr />
-
-<p>
-None of the hints given above needs to be on your home page
-downstream but it is convenient to have them here at startup.
-</p>
-
-<hr />
-
-</div>
-
-</form>
-
-</div>
+    <div class="zhenmins-container">
+        <div class="zhenmins-col-sm-12 zhenmins-col-lg-8">
+            <div class="panel" id="main-div">
+                <div class="panel-heading">Welcome to my demo page</div>
+                <div class="panel-body">
+                    <img data-src="holder.js/200x200" class="img-thumbnail"
+                         src="images/zhenming.jpg" style="width: 200px; height: 200px;">
+                    <p><b>Name: Zhenming Shen</b></p>
+                    <p><b>NUID: 001998546</b></p>
+                    <p>Hey guys! This is Zhenming's demo page for cs5610.</p>
+                    <p>Git Repository: 
+                        <a href="https://github.com/shenzm/cs5610.git" target="_blank">
+                            https://github.com/shenzm/cs5610.git
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="utilities" class="zhenmins-col-sm-12 zhenmins-col-lg-4">
+            <div class="panel">
+                <div class="panel-heading">Utilities</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
+                        <li class="list-group-item"><a href="statistics/" target="_blank">Statistics</a></li>
+                        <li class="list-group-item"><a href="source/" target="_blank">Source</a></li>
+                        <li class="list-group-item"><a href="search/" target="_blank">Search</a></li>
+                        <li class="list-group-item"><a href="searchtree/" target="_blank">SearchTree</a></li>
+                        <li class="list-group-item"><a href="textview/" target="_blank">TextView</a></li>
+                        <li class="list-group-item"><a href="filelist.aspx" target="_blank">FileList</a></li>
+                        <li class="list-group-item"><a href="autofile.aspx" target="_blank">AutoFile</a></li>
+                        <li class="list-group-item"><a href="images/autoimage.aspx" target="_blank">Images</a></li>
+                        <li class="list-group-item"><a href="blog/" target="_blank">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="home-nav-bottom" class="zhenmins-col-lg-12 zhenmins-col-sm-12">
+            <div class="panel">
+                <div class="panel-heading">Navigation Links</div>
+                <div class="panel-body">
+                    <ul class="list-group nav-list-bottom">
+                        <li class="list-group-item"><a href="story/index.htm?../experiments/" target="_blank">Experiements</a></li>
+                        <li class="list-group-item"><a href="#" target="_blank">Project</a></li>
+                        <li class="list-group-item"><a href="#" target="_blank">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

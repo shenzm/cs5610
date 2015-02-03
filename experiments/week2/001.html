@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week1-Exp1</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week2 - Experiment1</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>Bootstrap - Responsive Fixed Navigation Bar</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses the Bootstrap Framework to implement an
+                Responsive Navigation Bar which fixed at the top of the web page.
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of pre-defined css class and javascript in 
+                    Bootstrap framework, by including Bootstrap from a CDN, and add a 
+                    padding-top for the body. So the content won't be cover by the nav bar.
+                    It has the following features:
+                </p>
+                <p>
+                    1. The Nav Bar stick at the top of the web page, no matter how user
+                    scroll the web page.
+                </p>
+                <p>
+                    2. If browser window is too small to display the whole bar,
+                    the nav bar will be replaced by an menu icon. And user can
+                    use the menu icon to open it.
+                </p>
+                <div id="framewrap">
+                    <iframe class="box" src="fixed-nav-bar.html"></iframe>
+                </div>
+                <p>- Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;nav class="navbar navbar-default navbar-fixed-top"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="navbar-header"&gt; 
+            &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar"&gt; 
+                &lt;span class="icon-bar"&gt;&lt;/span&gt; 
+                &lt;span class="icon-bar"&gt;&lt;/span&gt; 
+                &lt;span class="icon-bar"&gt;&lt;/span&gt; 
+            &lt;/button&gt; 
+            &lt;a class="navbar-brand" href="#"&gt;ZhenminG's&lt;/a&gt; 
+        &lt;/div&gt; 
+        &lt;div id="myNavbar" class="collapse navbar-collapse"&gt; 
+            &lt;ul class="nav navbar-nav"&gt; 
+                &lt;li&gt;&lt;href="#" target="_blank"&gt;Experiements&lt;/a&gt;&lt;/li&gt; 
+                &lt;li&gt;&lt;href="#" target="_blank"&gt;Project&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;href="#" target="_blank"&gt;Documentation&lt;/a&gt;&lt;/li&gt; 
+            &lt;/ul&gt;
+        &lt;/div&gt;
+     &lt;/div&gt;
+&lt;/nav&gt;</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/001.html">001.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/fixed-nav-bar.html">fixed-nav-bar.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week2/css/fixed-nav-bar.css">fixed-nav-bar.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.w3schools.com/bootstrap/default.asp">
+                        W3Cschools Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://getbootstrap.com/getting-started/">
+                        Bootstrap Getting Started
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
