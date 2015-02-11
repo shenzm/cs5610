@@ -1,0 +1,6 @@
+﻿../../story/links.htm?../experiments/week3/link.txt      Experiment List
+001.html         Javascript - Simple Animation
+002.html         jQuery - Draggable Wigget Tryout
+003.html         jQuery - Easy paragraph manager
+004.html         jQuery - Web API calling with AJAX
+005.html         jQuery - Foldable Panel

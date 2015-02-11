@@ -1,0 +1,14 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+#object {
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+

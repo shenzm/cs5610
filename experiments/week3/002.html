@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week3-Exp2</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/002.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="js/002.js"></script>
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week3 - Experiment2</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>jQuery - Draggable Wigget Tryout</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses jQuery utilities to adjust 
+                some of the html contents.
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically user can add public tags, add drag these tags from public tags box to my tag box
+                </p>
+                <div class="code-box">
+                    <input id="tag-input" />
+                    <button id="tag-add">Add a tag</button>
+                    <p>Public Tags:</p>
+                    <div id="tag-box-1" class="tag-box">
+                        <ul>
+                        </ul>
+                    </div>
+                    <p>My Tags:</p>
+                    <div id="tag-box-2" class="tag-box">
+                        <ul>
+                            <li id="placeholder" class="tag">Drag to Here</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>- HTML Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;input id="tag-input" /&gt;
+&lt;button id="tag-add"&gt;Add a tag&lt;/button&gt;
+&lt;p&gt;Public Tags:&lt;/p&gt;
+&lt;div id="tag-box-1" class="tag-box"&gt; 
+    &lt;ul&gt; &lt;/ul&gt; 
+&lt;/div&gt; 
+&lt;p&gt;My Tags:&lt;/p&gt;
+&lt;div id="tag-box-2" class="tag-box"&gt;
+    &lt;ul&gt; 
+        &lt;li id="placeholder" class="tag"&gt;Drag to Here&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <p>- JS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>$(function () {
+    $("#tag-box-2 > ul").sortable({
+        placeholder: "sortable-placeholder"
+    });
+    $("#tag-box-2 > ul").droppable({
+        drop: function () {
+            $("#tag-box-2 > ul > #placeholder").remove()
+        }
+    });
+    $("#tag-box-1 > ul > li").draggable({
+        opacity: 0.35,
+        connectToSortable: "#tag-box-2 > ul",
+        addClasses: false
+    });
+    $("#tag-add").click(function () {
+        var text = $("#tag-input").val();
+        addTag(text);
+    });
+});</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/002.html">002.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/js/002.js">002.js</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/css/002.css">002.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://api.jqueryui.com/draggable/">
+                        jQuery API - Draggable Widget
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://api.jqueryui.com/droppable/">
+                        jQuery API - Dropppable Widget
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://api.jqueryui.com/sortable/">
+                        jQuery API - Sortable Widget
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

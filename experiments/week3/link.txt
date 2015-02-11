@@ -1,0 +1,10 @@
+﻿  !title=Week3 Experiments List
+  !pagetitle=WEEK 3: javascript and jQuery
+  !comment=Links for each experiments:
+  !hr
+
+001.html         Javascript - Simple Animation
+002.html         jQuery - Draggable Wigget Tryout
+003.html         jQuery - Easy paragraph manager
+004.html         jQuery - Web API calling with AJAX
+005.html         jQuery - Foldable Panel

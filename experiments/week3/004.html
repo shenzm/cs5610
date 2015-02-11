@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week3-Exp4</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="js/004.js"></script>
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week3 - Experiment4</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>jQuery - Web API calling with AJAX</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses web API of http://www.myapifilms.com/ to
+                search movie informations from IMDB.
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of AJAX function to dynamically retrieve data from
+                    http://www.myapifilms.com/ and display data on the web page.
+                    Usage:
+                </p>
+                <p>
+                    1. Input Movie name
+                </p>
+                <p>
+                    2. Press "Search Movie By Name" and wait for result
+                </p>
+                <div class="code-box">
+                    <label for="movie-name-input"> Input Movie Title Here:</label>
+                    <input id="movie-name-input" />
+                    <button id="search-movie" type="button"> Search Movie By Name </button>
+                    <div id="movies">
+                        Info list:
+                        <ul id="info-list"></ul>
+                    </div>
+                </div>
+                <p>- HTML Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;label for="movie-name-input"&gt;Input Movie Title Here:&lt;/label&gt;
+&lt;input id="movie-name-input" /&gt;
+&lt;button id="search-movie" type="button"&gt; Search Movie By Name &lt;/button&gt; 
+&lt;div id="movies"&gt; Info list: &lt;ul id="info-list"&gt;&lt;/ul&gt; &lt;/div&gt;</pre>
+                </div>
+                <p>- JS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>$(function () {
+    $("#search-movie").click(function () {
+        var urlPrefix = "http://www.myapifilms.com/imdb?format=JSONP&title="
+        var title = $("#movie-name-input").val();
+        var urlVar = urlPrefix + encodeURIComponent(title);
+        var attributes = ["title", "rating", "plot"];
+        $.ajax({
+            url: urlVar,
+            dataType: "jsonp",
+            success: function (response) {
+                $("#info-list").empty();
+                $.each(response, function (i, r) {
+                    var movieInfo = r;
+                    $.each(attributes, function (j, a) {
+                        var attrValue = movieInfo[a];
+                        var attrObj = $("&lt;li&gt;&lt;/li&gt;");
+                        attrObj.text(a + ": " + attrValue);
+                        $("#info-list").append(attrObj);
+                    });
+                });
+            }
+        });
+    });
+})</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/004.html">004.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/js/004.js">004.js</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.myapifilms.com/">
+                        3rd party IMDB Web API
+                    </a>
+                    <a target="_blank" href="http://api.jquery.com/jquery.each/">
+                        jQuery - Iterate Array
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

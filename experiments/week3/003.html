@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week3-Exp3</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="js/003.js"></script>
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week3 - Experiment3</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>jQuery - Easy paragraph manager</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses jQuery utilities to implement
+                a simple web application that can add/drag/save/load
+                paragraphs.
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of click function for jQuery objects and defines a
+                    bunch of functions that support adding draggable paragraph, save the paragraph's
+                    content as well as its position in the browser's local storage.
+                    Usage:
+                </p>
+                <p>
+                    1. Press "Add Paragraph" to add a draggable paragraph, edit and drag the paragraph
+                </p>
+                <p>
+                    2. Press "Save" to save the paragraph into browser's local storage.
+                </p>
+                <p>
+                    3. Refresh the page and press "Load" to see all the stored paragraph
+                </p>
+                <p>
+                    4. Press "Clear" to clear all paragraph both from current web page and from local storage
+                </p>
+                <div class="code-box">
+                    <div id="control">
+                        <button id="addParagraph"> Add Paragraph </button>
+                        <button id="save"> Save </button>
+                        <button id="load"> Load </button>
+                        <button id="clear"> Clear Storage </button>
+                    </div>
+                    <p>Here are the paragraphs:</p>
+                    <div id="content">
+                    </div>
+                </div>
+                <p>- HTML Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;div id="control"&gt;
+    &lt;button id="addParagraph"&gt; Add Paragraph &lt;/button&gt;
+    &lt;button id="save"&gt; Save &lt;/button&gt;
+    &lt;button id="load"&gt; Load &lt;/button&gt;
+    &lt;button id="clear"&gt; Clear Storage &lt;/button&gt;
+&lt;/div&gt;
+&lt;p&gt;Here are the paragraphs:&lt;/p&gt;
+&lt;div id="content"&gt; &lt;/div&gt;</pre>
+                </div>
+                <p>- JS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>$(function () {
+    $("#addParagraph").click(function () {
+        addParagraph("Default Paragraph (Edit this)", 10, 10);
+    });
+    $("#save").click(function () {
+        saveParagraph();
+    });
+    $("#load").click(function () {
+        loadParagraph();
+    });
+    $("#clear").click(function () {
+        clearParagraph();
+    });
+})
+function addParagraph(text, x, y) {
+    var newParagraph = $("&lt;p contenteditable=true&gt;&lt;/p&gt;");
+    newParagraph
+        .html(text)
+        .draggable({ grid: [10, 10] })
+        .css({
+            "position": "relative",
+            "left": x,
+            "top": y
+        });
+    $("#content").append(newParagraph);
+}
+function saveParagraph() {
+    var allParagraphs = $("#content p");
+    var paragraphs = [];
+    allParagraphs.each(function (index, item) {
+        basePos = $("#content").position()
+        var pObj = {
+            text: $(item).text(),
+            x: $(item).position().left - basePos.left,
+            y: $(item).position().top - basePos.top
+        }
+        paragraphs.push(pObj);
+    });
+    var pStr = JSON.stringify(paragraphs);
+    console.log(pStr);
+    localStorage.setItem("page", pStr);
+}
+function loadParagraph() {
+    var pStr = localStorage.getItem("page");
+    if (pStr == null)
+        alert("Nothing stored");
+    paragraphs = JSON.parse(pStr);
+    for (var i in paragraphs) {
+        var p = paragraphs[i];
+        var text = p.text;
+        var x = p.x;
+        var y = p.y;
+        addParagraph(text, x, y);
+    }
+}
+function clearParagraph() {
+    localStorage.removeItem("page");
+    $("#content").html("");
+}</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/003.html">003.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/js/003.js">003.js</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://api.jqueryui.com/draggable/">
+                        jQuery API - Draggable Widget
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿#panel, #flip {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #566675;
+    border: solid 1px #cae0f4;
+    border-radius: 3px;
+}
+
+#flip {
+    background-color: #edf6fe;
+}
+
+#panel {
+    background-color: white;
+    height: 200px;
+    display: none;
+}

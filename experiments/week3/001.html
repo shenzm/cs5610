@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week3-Exp1</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/001.css" />
+    <script src="js/001.js"></script>
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week3 - Experiment1</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>Javascript - Simple Animation</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses the basic component in JS to adjust how the
+                div with id "object" is rendered in the browser.
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of event handler mechanism, such as "onclick"
+                    and "onchange" to run related Javascript functions, in which change the 
+                    either background color or the size of the div with id "object".
+                    Usage:
+                </p>
+                <p>
+                    1. Adjust the range bar, to see the change of text and object div.
+                </p>
+                <p>
+                    2. Press "Start Animation" to see how the backgound-color changes with time.
+                </p>
+                <div class="code-box" id="animation">
+                    <div id="object">Object</div>
+                    <label for="size-range"> Adjust the size of the rectangle: </label>
+                    <span id="size-display">80 px</span>
+                    <input id="size-range" type="range" 
+                           min="80" max="200" value="80"
+                           onchange="changeSize()" />
+                    <br />
+                    <button onclick="runAnimation()">Start Animation</button>
+                </div>
+                <p>- HTML Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;div id="object"&gt;Object&lt;/div&gt;
+&lt;label for="size-range"&gt; Adjust the size of the rectangle: &lt;/label&gt;
+&lt;span id="size-display"&gt;80 px&lt;/span&gt; 
+&lt;input id="size-range" type="range"
+          min="80" max="200" value="80"
+          onchange="changeSize()" /&gt;
+&lt;button onclick="runAnimation()"&gt;Start Animation&lt;/button&gt;</pre>
+                </div>
+                <p>- JS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>function runAnimation() {
+    startAnimation();
+    setTimeout(changeColor, 0, "lightblue");
+    setTimeout(changeColor, 1000, "lightseagreen");
+    setTimeout(changeColor, 2000, "lightpink");
+    setTimeout(changeColor, 3000, "lightsalmon");
+    setTimeout(changeColor, 4000, "white");
+    setTimeout(endAnimation, 4000);
+}
+function changeColor(newColor) {
+    var obj = document.getElementById("object");
+    obj.style.backgroundColor = newColor;
+}
+function startAnimation() {
+    var obj = document.getElementById("object");
+    obj.innerHTML = "Start";
+}
+function endAnimation() {
+    var obj = document.getElementById("object");
+    obj.innerHTML = "End";
+}
+function changeSize() {
+    var sizeDisplay = document.getElementById("size-display");
+    var obj = document.getElementById("object");
+    var sizeRange = document.getElementById("size-range");
+    var size = sizeRange.value;
+    sizeDisplay.innerHTML = size + "px";
+    obj.style.width = size + "px";
+    obj.style.height = (size / 2) + "px";
+}</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/001.html">001.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/js/001.js">001.js</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/css/001.css">001.css</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.w3schools.com/bootstrap/default.asp">
+                        W3Cschools JavaScript
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.sislands.com/coin70/examples.htm">
+                        JavaScript Code Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

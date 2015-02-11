@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week3-Exp5</title>
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/005.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="js/005.js"></script>
+</head>
+<body>
+    <div class="experiment-banner">
+        <header>Week3 - Experiment5</header>
+    </div>
+    <div class="experiment-nav">
+        <nav>
+            <a href="#source-code-link">SOURCE CODE</a>
+            <a href="#reference-link">REFERENCE</a>
+        </nav>
+    </div>
+    <div class="experiment-contents">
+        <h1>jQuery - foldable panel</h1>
+        <div class="item">
+            <h2>Description: </h2>
+            <div class="item">
+                This experiment uses jQuery to implement a simple foldable panel
+            </div>
+        </div>
+        <div class="item">
+            <h2>Experiment Detail:</h2>
+            <div class="item">
+                <p>
+                    Basically it make uses of jQuery's slideToggle function to 
+                    dynamically hide or show the panel by clicking the panel header.
+                <div class="code-box">
+                    <div id="flip">Click to toggle panel</div>
+                    <div id="panel">Hello world!</div>
+                </div>
+                <p>- HTML Code Snippet:</p>
+                <div class="code-box">
+                    <pre>&lt;div id="flip"&gt;Click to toggle panel&lt;/div&gt;
+&lt;div id="panel"&gt;Hello world!&lt;/div&gt;</pre>
+                </div>
+                <p>- CSS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>#panel, #flip {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #566675;
+    border: solid 1px #cae0f4;
+    border-radius: 3px;
+}
+#flip {
+    background-color: #edf6fe;
+}
+#panel {
+    background-color: white;
+    height: 200px;
+    display: none;
+}
+</pre>
+                </div>
+                <p>- JS Code Snippet: </p>
+                <div class="code-box">
+                    <pre>$(document).ready(function () {
+    $("#flip").click(function () {
+        $("#panel").slideToggle(500);
+    });
+    $("#stop").click(function () {
+        $("#panel").stop();
+    });
+});</pre>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="experiment-link" id="source-code-link">
+            <h2>Source Code Links: </h2>
+            <ul>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/005.html">005.html</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/css/005.css">005.css</a>
+                </li>
+                <li>
+                    <a href="../../fileview/Default.aspx?~/experiments/week3/js/005.js">005.js</a>
+                </li>
+            </ul>
+        </div>
+        <div class="experiment-link" id="reference-link">
+            <h2>Reference Links: </h2>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.w3schools.com/jquery/jquery_examples.asp">
+                        W3CSchool - jQuery Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
