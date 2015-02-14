@@ -6,3 +6,4 @@
 ../story/index.htm?../experiments/week1/        WEEK 1: HTML5, CSS and Responsive Web Page
 ../story/index.htm?../experiments/week2/        WEEK 2: Bootstrap try out
 ../story/index.htm?../experiments/week3/        WEEK 3: javascript and jQuery
+../story/index.htm?../experiments/week4/        WEEK 4: AngularJS and Ajax

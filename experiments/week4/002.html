@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week4-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="prism/css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="prism/js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Week4 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Get Avatar Application</h3>
+            <div>
+                This experiment uses AngularJS to build up a single-page application that 
+                gets and renders the movie information of "Avatar" movie dynamically by 
+                calling Web API during the page loading.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is on <b>GetAvatar.html</b>, which is shown in the following iframe.
+
+                    </li>
+                    <li>
+                        User can click on the hyperlink to trigger a web API call, and see the result
+                        of the call being rendered at the specific pre-defined place.
+                    </li>
+                    <li>
+                        The API call is an AJAX call to <b>myapifilms.com</b>, which is a unoffical
+                        API site that can retrieve movie information from <b>IMDb.com</b>
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="apps/GetAvatar.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <iframe class="experiment-iframe" src="apps/GetAvatar.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                How to write a simple page app that can react to button click event?
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/GetAvatar.js&quot;&gt;&lt;/script&gt;
+...
+&lt;body ng-app=&quot;GetAvatar&quot;&gt;
+    &lt;div ng-controller=&quot;GetAvatarController&quot;&gt;
+        &lt;button ng-click=&quot;getAvatar()&quot;&gt;Get Avatar&lt;/button&gt;
+        &lt;p&gt;Movie Information:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat=&quot;m in movies&quot;&gt;
+                &lt;p&gt;ID: {{m.idIMDB}}&lt;/p&gt;
+                &lt;p&gt;Title: {{m.title}}&lt;/p&gt;
+                &lt;p&gt;Description: {{m.simplePlot}}&lt;/p&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">var app = angular.module("GetAvatar", []);
+app.controller("GetAvatarController",
+function ($scope, $http) {
+    var apiKey = '';
+    var npUrl = 'http://www.myapifilms.com/imdb?title=avatar&format=JSONP&limit=3';
+    $scope.getAvatar = function () {
+        $http({
+            method: 'JSONP',
+            url: npUrl + '&callback=JSON_CALLBACK'
+        }).success(function (data) {
+            console
+            var movies = data;
+            $scope.movies = movies;
+            console.log("Hello");
+        }).error(function (data, status, headers, config) {
+            alert("Error finding movie");
+        });
+    };
+});</code></pre>
+
+                <ol>
+                    <li>
+                        Include the <b>angular.min.js</b> and <b>GetAvatar.js</b> </li>
+                    <li>
+                        Set directive <code>ng-app</code> to the name of the app <code>GetAvatar</code>, to auto-bootstrap an 
+                        AngularJS application. 
+                    </li>
+                    <li>
+                        Set directive <code>ng-controller</code> to Controller class <code>GetAvatarController</code>,
+                        which contains business logic behind the application to decorate the scope with functions and values.
+                    </li>
+                    <li>
+                        Set directive <code>ng-click</code> to function <code>getAvatar</code>, which use AJAX call 
+                        to get the data and stores it into a list named <code>moives</code>, since the <code>movies</code>
+                        would be used by directive <code>ng-repeat</code> to render the movie info as a list
+                    </li>
+                    <li>
+                        Notice that we need to put expression, such as <code>{{m.title}}</code>, in the html file to enable the render phase
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/GetAvatar.html">GetAvatar.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/js/GetAvatar.js">GetAvatar.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/css/GetAvatar.css">GetAvatar.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+    </div>
+</body>
+</html>

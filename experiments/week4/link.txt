@@ -1,0 +1,10 @@
+﻿  !title=Week4 Experiments List
+  !pagetitle=WEEK 4: AngularJS and Ajax
+  !comment=Links for each experiments:
+  !hr
+
+001.html         Bootstrap - Style refinement for experiment pages
+002.html         AngularJS - Get Avatar Application
+003.html         AngularJS - Event Management Application
+004.html         AngularJS - Event Management Application II
+005.html         AngularJS - Event Detail Image View

@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week4-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="prism/css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="prism/js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Week4 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Event Detail Image View</h3>
+            <div>
+                This experiment builds an single-page app, where user can see
+                different events detail infomation, as well as the large event image
+                by hover mouse at the small event thumbnail.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        This app is on <b>ImageView.html</b>, which is shown in the following iframe.
+                        Its inspired by the product detail page of <b>amazon.com</b>, on which user can
+                        hover mouse on different product thumbnail, and see the larger image in the main
+                        frame.
+                    </li>
+                    <li>
+                        User can hover mouse on the thumbnail of NFL super bowl on the right panel, 
+                        to see the larger image on the left side main frame. And the event informations
+                        will also be changed accordingly on the right panel.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="apps/ImageView.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <iframe class="experiment-iframe" src="apps/ImageView.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;imageViewer&quot;&gt;
+    &lt;div class=&quot;col-sm-4 col-xs-6&quot;&gt;
+        &lt;img ng-src=&quot;{{mainEvent.imgUrl}}&quot; class=&quot;mainImage&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-8 col-xs-6&quot;&gt;
+        &lt;div&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;Event:&lt;/dt&gt;
+                &lt;dd&gt;{{mainEvent.eventName}}&lt;/dd&gt;
+                &lt;dt&gt;Time:&lt;/dt&gt;
+                &lt;dd&gt;{{mainEvent.time}}&lt;/dd&gt;
+                &lt;dt&gt;Event:&lt;/dt&gt;
+                &lt;dd&gt;{{mainEvent.place}}&lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;ul class=&quot;list-inline thumbnails&quot;&gt;
+                &lt;li ng-repeat=&quot;e in events&quot;&gt;
+                    &lt;img class=&quot;thumbnail&quot; ng-src=&quot;{{e.imgUrl}}&quot;
+                         ng-mouseenter=&quot;setMainEvent(e)&quot; /&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">var app = angular.module("ImageView", []);
+app.controller("ImageViewController",
+function ($scope) {
+    $scope.events = initEvents;
+    $scope.mainEvent = initEvents[0];
+    $scope.setMainEvent = function (e) {
+        $scope.mainEvent = e;
+    };
+});</code></pre>
+                <ol>
+                    <li>
+                        Include <b>angular.min.js</b> and <b>ImageView.js</b> as usual.
+                    </li>
+                    <li>
+                        For <code>&lt;img&gt;</code> with class <code>mainImage</code>, bind the <code>ngSrc</code> 
+                        directive to the <code>mainEvent.imgUrl</code> property. MainEvent will be initially
+                        set to the first element of <code>initEvents</code> in <b>ImageView.js</b>.
+                    </li>
+                    <li>
+                        For <code>&lt;dl&gt;</code>, we use all the attributes of mainEvent as proterpies 
+                        to set up a template for the event detail information field.
+                    </li>
+                    <li>
+                        For the <code>&lt;ul&gt;</code> with class <code>thumbnails</code>, bind <code>ng-repeat</code> 
+                        with every element <code>e</code> in <code>events</code>, which is set equal to the initEvent in <b>ImageView.js</b>.
+                        And for the <code>&lt;li&gt;</code> with class <code>thumbnail</code>, bind the <code>ngSrc</code> directive 
+                        to the <code>e.imgUrl</code> property, and <code>ng-mouseenter</code> to the function 
+                        <code>setMainEvent(e)</code>, which sets the <code>mainEvent</code> to <code>e</code>.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/ImageView.html">ImageView.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/js/ImageView.js">ImageView.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/css/ImageView.css">ImageView.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+    </div>
+</body>
+</html>

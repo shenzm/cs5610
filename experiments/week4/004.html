@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week4-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="prism/css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="prism/js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Week4 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Event Management Application II</h3>
+            <div>
+                This experiment improves the last experiment, by supporting rough
+                seraching on the events, and sorting events according to different
+                property.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is on <b>EventManager-II.html</b>, which is shown in the following iframe.
+
+                    </li>
+                    <li>
+                        User can input some keyword, such as "<b>NEU</b>"  in the search field, the controller
+                        would recognize it immediately and updates the table with only satisfied events in it.
+                    </li>
+                    <li>
+                        On the other hand, user can also choose which property on the event they want to sort
+                        by. For instance, user can sort the event by "<b>Time</b>".
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="apps/EventManager-II.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <iframe class="experiment-iframe" src="apps/EventManager-II.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;well&quot;&gt;
+    &lt;label for=&quot;filterInput&quot;&gt;Search: &lt;/label&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;query&quot; id=&quot;filterInput&quot; placeholder=&quot;&quot;&gt;
+    &lt;label for=&quot;filterInput&quot;&gt;Sort By: &lt;/label&gt;
+    &lt;select ng-model=&quot;orderKey&quot;&gt;
+        &lt;option value=&quot;eventName&quot;&gt;Event Name&lt;/option&gt;
+        &lt;option value=&quot;time&quot;&gt;Time&lt;/option&gt;
+        &lt;option value=&quot;place&quot;&gt;Place&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+                    
+&lt;tr ng-repeat=&quot;e in events | filter: query | orderBy: orderKey&quot;&gt;
+    ...
+&lt;/tr&gt;</code></pre>
+                <ol>
+                    <li>
+                        Include <b>angular.min.js</b> and <b>EventManager-II.js</b>. (Only change in 
+                        <b>EventManager-II.js</b> is the way it generate initial events)
+                    </li>
+                    <li>
+                        Add two more critiria <code> filter: query</code> and <code> orderBy: orderKey</code> 
+                        in the directive <code>ng-repeat</code>. Which leads the controller to used 
+                        <code>query</code> as the filter condition, and <code>orderKey</code> as the order
+                        condition.
+                    </li>
+                    <li>
+                        Bind <code>&lt;input&gt;</code> with element <code>query</code>, and bind
+                        <code>&lt;select&gt;</code> with element <code>orderKey</code>, by setting their
+                        <code>ng-module</code> directive. As mentioned above, the value of these two element 
+                        would be used in <code>ng-repeat</code> of <code>&lt;tr&gt;</code> as the critira of
+                        filter and order events.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/EventManager-II.html">EventManager-II.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/apps/js/EventManager-II.js">EventManager-II.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+    </div>
+</body>
+</html>

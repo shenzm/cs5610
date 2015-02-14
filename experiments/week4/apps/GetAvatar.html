@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/GetAvatar.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="js/GetAvatar.js"></script>
+</head>
+<body style="padding-top: 30px">
+    <div class="container">
+        <div ng-app="GetAvatar">
+            <div ng-controller="GetAvatarController">
+                <button class="btn btn-primary" ng-click="getAvatar()">Get Avatar</button>
+                <p>Movie Information:</p>
+                <ul>
+                    <li ng-repeat="m in movies">
+                        <img ng-src="{{m.urlPoster}}" />
+                        <p>ID: {{m.idIMDB}}</p>
+                        <p>Title: {{m.title}}</p>
+                        <p>Description: {{m.simplePlot}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week4-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="prism/css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="prism/js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Week4 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Bootstrap - Style refinement for experiment pages</h3>
+            <div>
+                This experiment use Bootstrap to refine the style of all experiment page,
+                so as to provide more user-friendly page layout, which includes code
+                highlighting feature 
+                
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Detail:</h4>
+            <p>
+                <ol>
+                    <li>Title and brief introduction of the experiment is displayed in a <code>.jumbotron</code></li>
+                    <li>Experiment Details and Code Analysis showed in a paragraph inside of <code>.experiment-items</code>.</li>
+                    <li>Code analysis includes well formatted and highlighted snippets, which is easier to read.</li>
+                </ol>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                How to display well-formated and highlighted html code in a webpage?
+                <ol>
+                    <li>Download and include the <b>prism.css</b> and <b>prism.js</b> into the web page.
+                        <pre><code class="language-markup scroll-overflow">&lt;link rel=&quot;stylesheet&quot; href=&quot;prism/css/prism.css&quot;&gt;
+&lt;script src=&quot;prism/js/prism.js&quot;&gt;&lt;/script&gt;</code></pre>
+                    </li>
+                    <li>Using HTML Escape Formatter to escape the HTML source code, and enclose it into
+                        <code>&lt;pre&gt;&lt;code&gt;</code><b>escaped-html</b><code>&lt;/code&gt;&lt;/pre&gt;</code>.
+                        <pre><code class="language-markup scroll-overflow">&lt;pre&gt;&lt;code class=&quot;language-markup scroll-overflow&quot;&gt;&amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;Example&amp;lt;/h3&amp;gt;
+    &amp;lt;p&amp;gt;This is an example&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;</code></pre>
+                    </li>
+                    <li>
+                        Set the <code>&lt;code&gt;</code> using <code>.language-markup</code>, 
+                        which tells <b>prism</b> to render the code as a markup lanuage
+                    </li>
+                    <li>
+                        Define a class named <code>.scroll-overflow</code>, which disable word break
+                        and force <code>code</code> to scroll on overflow. And apply this class to 
+                        <code>code</code>.
+                        <pre><code class="language-css scroll-overflow">.scroll-overflow {
+    overflow: scroll ;
+    word-wrap: normal;
+}</code></pre>
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week4/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/experiments.css">experiments.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://www.freeformatter.com/html-escape.html">
+                            Freeformatter - HTML Escape
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

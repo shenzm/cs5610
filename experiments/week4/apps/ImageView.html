@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ImageView</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ImageView.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="js/ImageView.js"></script>
+</head>
+<body>
+    <div ng-app="ImageView">
+        <div ng-controller="ImageViewController">
+            <div class="container">
+                <div class="imageViewer">
+                    <div class="col-sm-4 col-xs-6">
+                        <img ng-src="{{mainEvent.imgUrl}}" class="mainImage" />
+                    </div>
+                    <div class="col-sm-8 col-xs-6">
+                        <div>
+                            <dl>
+                                <dt>Event:</dt>
+                                <dd>{{mainEvent.eventName}}</dd>
+                                <dt>Time:</dt>
+                                <dd>{{mainEvent.time}}</dd>
+                                <dt>Event:</dt>
+                                <dd>{{mainEvent.place}}</dd>
+                            </dl>
+                            <ul class="list-inline thumbnails">
+                                <li ng-repeat="e in events">
+                                    <img class="thumbnail" ng-src="{{e.imgUrl}}"
+                                         ng-mouseenter="setMainEvent(e)" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

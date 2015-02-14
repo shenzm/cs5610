@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EventManager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="js/EventManager.js"></script>
+</head>
+<body>
+    <div ng-app="EventManager">
+        <div ng-controller="EventManagerController">
+            <div class="container">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Event</th>
+                                <th>Time</th>
+                                <th>Place</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-model="event">
+                                <td>&nbsp;</td>
+                                <td><input type="text" ng-model="event.eventName" /></td>
+                                <td><input type="datetime-local" ng-model="event.time" /></td>
+                                <td><input type="text" ng-model="event.place" /></td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button class="btn btn-default btn-sm" ng-click="addEvent(event)">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="e in events">
+                                <td>{{events.indexOf(e) + 1}}</td>
+                                <td>{{e.eventName}}</td>
+                                <td>{{e.time.toUTCString()}}</td>
+                                <td>{{e.place}}</td>
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="removeEvent(e)">
+                                        <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
