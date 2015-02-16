@@ -52,6 +52,15 @@
                     <button onclick="runAnimation()">Start Animation</button>
                 </div>
                 <p>- HTML Code Snippet:</p>
+                <p>
+                    1. Add a &lt;div&gt; with id <b>object</b>, which is used for the animation.
+                </p>
+                <p>
+                    2. Add a <b>range</b> type &lt;div&gt; to adjust the size of the <b>object</b>
+                </p>
+                <p>
+                    3. Add a &lt;button&gt; to trigger the animation. 
+                </p>
                 <div class="code-box">
                     <pre>&lt;div id="object"&gt;Object&lt;/div&gt;
 &lt;label for="size-range"&gt; Adjust the size of the rectangle: &lt;/label&gt;
@@ -62,6 +71,15 @@
 &lt;button onclick="runAnimation()"&gt;Start Animation&lt;/button&gt;</pre>
                 </div>
                 <p>- JS Code Snippet: </p>
+                <p>
+                    1. Function <b>runAnimation()</b> is called by clicking the &lt;button&gt;. 
+                    It calls the other function <b>changeColor()</b> which sets the color of the
+                    object with the input color parameter, every 1000 miliseconds.
+                </p>
+                <p>
+                    2. Function <b>changeSize()</b> is called by changing the range bar.
+                    It sets a new width and height for the object according to the input range value.
+                </p>
                 <div class="code-box">
                     <pre>function runAnimation() {
     startAnimation();

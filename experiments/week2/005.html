@@ -30,10 +30,25 @@
                 <p>
                     Basically it make uses of pre-defined css class in Bootstrap 
                     framework, by including Bootstrap from a CDN. And build up the 
-                    sign in form in customized css file.
+                    sign in form in customized css file. User can choose "Remember Me"
+                    options as well when they are logging in.
                 </p>
                 <iframe class="box" src="signin.html"></iframe>
                 <p>- Code Snippet:</p>
+                <p>
+                    1. Create a &lt;form&gt; for the sign in page.
+                </p>
+                <p>
+                    2. Add two &lt;input&gt; inside the form, one for username, another for password,
+                    and provide placeholder for these two &lt;input&gt; tag.
+                </p>
+                <p>
+                    3. Add a &lt;input&gt; that contains a checkbox, so user can choose to store
+                    the username and password temporarily in local browser storage.
+                </p>
+                <p>
+                    4. Add a &lt;input&gt; at the end, to enable form submitting for the sign in page.
+                </p>
                 <div class="code-box">
                     <pre>&lt;form id="signin-form" class="zhenmins-signin-form"&gt;
     &lt;p class="zhenmins-signin-heading"&gt;Please Sign In&lt;/p&gt;

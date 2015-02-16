@@ -52,6 +52,13 @@
                     </div>
                 </div>
                 <p>- HTML Code Snippet:</p>
+                <p>
+                    1. Simply create an &lt;input&gt; tag where user can input movie title.
+                </p>
+                <p>
+                    2. Add a &lt;div&gt; with an &lt;ul&gt; in it, in which list all the returned
+                    movie entries.
+                </p>
                 <div class="code-box">
                     <pre>&lt;label for="movie-name-input"&gt;Input Movie Title Here:&lt;/label&gt;
 &lt;input id="movie-name-input" /&gt;
@@ -59,6 +66,17 @@
 &lt;div id="movies"&gt; Info list: &lt;ul id="info-list"&gt;&lt;/ul&gt; &lt;/div&gt;</pre>
                 </div>
                 <p>- JS Code Snippet: </p>
+                <p>
+                    1. Bind a function has ajax call with the <b>search-movie</b> button. 
+                </p>
+                <p>
+                    2. The ajax call need to specify parameters, such as <b>url</b>, <b>dataType</b> 
+                    ,<b>attributes</b> and a function to be called when the call succeeded.
+                </p>
+                <p>
+                    3. The success function use the return result of ajax call <b>response</b> 
+                    as the input parameter, iterate through it, and display it in the info-list.
+                </p>
                 <div class="code-box">
                     <pre>$(function () {
     $("#search-movie").click(function () {

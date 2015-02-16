@@ -19,7 +19,11 @@
         <h1>HTML5 - New Form Elements</h1>
         <div class="item">
             <h2>Description: </h2>
-            <div class="item">This experiment go through some useful new form elements in HTML5</div>
+            <div class="item">
+                There are some new form elements in HTML5, such as &lt;datalist&gt;, &lt;keugen&gt; 
+                and &lt;output&gt;. These form elements are added becuase of their frequent uses
+                in current webpage. This experiment go through &lt;datalist&gt; and &lt;output&gt;.
+            </div>
         </div>
         <div class="item">
             <h2>Sub-experiments:</h2>
@@ -38,6 +42,11 @@
                     </datalist>
                 </div>
                 <p>- Code Snippet:</p>
+                <p>
+                    &lt;datalist&gt; is used with an &lt;input&gt;. The &lt;input&gt; is
+                    just a regular input field connected to the &lt;datalist&gt; by setting 
+                    its list attribute to the id of the &lt;datalist&gt;
+                </p> 
                 <div class="code-box">
                     <pre>&lt;input list="course"/&gt;
 &lt;datalist id="course"&gt;
@@ -59,6 +68,11 @@
                     <output name="display">0</output>
                 </form>
                 <p>- Code Snippet:</p>
+                <p>
+                    &lt;output&gt; is a semantic tag that used represent the result of
+                    a calculation related to the form input. In my code, I connect it with
+                    the range type &lt;input&gt; tag using a javascript snippet.
+                </p> 
                 <div class="code-box">
                     <pre>&lt;form oninput="display.value = parseInt(volume.value)"&gt;
     &lt;label for="volumn"&gt;Volume:&lt;/label&gt; 

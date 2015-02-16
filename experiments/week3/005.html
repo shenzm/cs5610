@@ -39,11 +39,21 @@
                     <div id="panel">Hello world!</div>
                 </div>
                 <p>- HTML Code Snippet:</p>
+                <p>
+                    1. Define a &lt;div&gt; with id <b>flip</b>, which can be used as a button
+                    to toggle the panel.
+                </p>
+                <p>
+                    2. Define a &lt;div&gt; with id <b>panel</b>, which is the toggable panel.
+                </p>
                 <div class="code-box">
                     <pre>&lt;div id="flip"&gt;Click to toggle panel&lt;/div&gt;
 &lt;div id="panel"&gt;Hello world!&lt;/div&gt;</pre>
                 </div>
                 <p>- CSS Code Snippet: </p>
+                <p>
+                    1. Set the background color and border style for the two &lt;div&gt;
+                </p>
                 <div class="code-box">
                     <pre>#panel, #flip {
     padding: 10px;
@@ -64,13 +74,13 @@
 </pre>
                 </div>
                 <p>- JS Code Snippet: </p>
+                <p>
+                    1. Call the <b>slideToggle()</b> function inside the click function of <b>#flip</b>
+                </p>
                 <div class="code-box">
                     <pre>$(document).ready(function () {
     $("#flip").click(function () {
         $("#panel").slideToggle(500);
-    });
-    $("#stop").click(function () {
-        $("#panel").stop();
     });
 });</pre>
                 </div>

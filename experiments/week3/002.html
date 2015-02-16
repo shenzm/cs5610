@@ -51,6 +51,15 @@
                     </div>
                 </div>
                 <p>- HTML Code Snippet:</p>
+                <p>
+                    1. Add an &lt;input&gt; to accept the tag name that user want to add.
+                </p>
+                <p>
+                    2. Add a &lt;button&gt; to support the tag adding function.
+                </p>
+                <p>
+                    3. Add two &lt;div&gt;, one is a public tag box, another is a personal tag box
+                </p>
                 <div class="code-box">
                     <pre>&lt;input id="tag-input" /&gt;
 &lt;button id="tag-add"&gt;Add a tag&lt;/button&gt;
@@ -66,6 +75,17 @@
 &lt;/div&gt;</pre>
                 </div>
                 <p>- JS Code Snippet: </p>
+                <p>
+                    1. Set the &lt;ul&gt; in <b>tag-box-1</b> to be draggable, so it can be dragged.
+                </p>
+                <p>
+                    2. Set the &lt;ul&gt; in <b>tag-box-2</b> to be sortable and droppable. So that
+                    the tags in <b>tag-box-1</b> can be dropped into it.
+                </p>
+                <p>
+                    3. Set the function to be called when the &lt;button&gt; with id <b>tag-add</b>
+                    is clicked. The function will add a new &lt;li&gt; in <b>tag-box-1</b>.
+                </p>
                 <div class="code-box">
                     <pre>$(function () {
     $("#tag-box-2 > ul").sortable({

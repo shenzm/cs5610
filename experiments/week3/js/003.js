@@ -9,7 +9,7 @@
         loadParagraph();
     });
     $("#clear").click(function () {
-        clearParagraph();
+        clearParagraph()
     });
 })
 

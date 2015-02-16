@@ -10,8 +10,8 @@
     <title>Demo Home Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="experiments/home/css/normalize.css" />
-    <link rel="stylesheet" href="experiments/home/css/home.css"/>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/home.css"/>
 </head>
 <body>
     <nav class="zhenmins-nav zhenmins-nav-fixed-top">

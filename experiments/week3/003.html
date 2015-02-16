@@ -62,6 +62,13 @@
                     </div>
                 </div>
                 <p>- HTML Code Snippet:</p>
+                <p>
+                    1. Add a &lt;div&gt; with id <b>control</b> that contains all control panel buttons
+                </p>
+                <p>
+                    2. Add a &lt;div&gt; with id <b>content</b> that will be the container of all
+                    paragraphs being added. 
+                </p>
                 <div class="code-box">
                     <pre>&lt;div id="control"&gt;
     &lt;button id="addParagraph"&gt; Add Paragraph &lt;/button&gt;
@@ -73,6 +80,14 @@
 &lt;div id="content"&gt; &lt;/div&gt;</pre>
                 </div>
                 <p>- JS Code Snippet: </p>
+                <p>
+                    1. Set the inner function for every click function for each button accordingly.
+                </p>
+                <p>
+                    2. Defined four utility functions that will be called when certain button is clicked.
+                    They are <b>addParagraph</b>, <b>saveParagraph</b>, <b>loadParagraph</b>, 
+                    and <b>clearParagraph</b>.
+                </p>
                 <div class="code-box">
                     <pre>$(function () {
     $("#addParagraph").click(function () {
