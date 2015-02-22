@@ -3,3 +3,4 @@
 ../story/index.htm?../experiments/week2/          WEEK 2
 ../story/index.htm?../experiments/week3/          WEEK 3
 ../story/index.htm?../experiments/week4/          WEEK 4
+../story/index.htm?../experiments/week5/          WEEK 5

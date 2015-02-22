@@ -1,0 +1,25 @@
+﻿<div class="panel panel-default" ng-controller="homeCtrl">
+    <div class="panel-body">
+        <p>Restaurant List:</p>
+        <ul class="business-item-list">
+            <li ng-repeat="b in businessList">
+                <div class="row business-item">
+                    <img class="business-item-thumbnail"
+                         src="../../../images/week5/default-image.jpg" />
+                    <div class="col-sm-3 col-xs-12 business-item-info">
+                        <h4>{{b.name}}</h4>
+                        <p class="text-info">{{b.category}}</p>
+                        <span>{{b.price}}</span>
+                        <span>{{b.rating}}</span>
+                    </div>
+                    <div class="business-item-operations">
+                        <button class="btn btn-default" ng-click="addFavorite(b)"
+                                ng-disabled="inFavorite(b)">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

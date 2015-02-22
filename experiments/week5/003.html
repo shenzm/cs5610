@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week5-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week5 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Routing and Service II</h3>
+            <div>
+                This experiment is based on last experiment, we already have multiple views and a global service
+                that can be called in the controller. So we enrich the global service functions to support more
+                interactive multiple view design. 
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app enhanced <b>BusinessApp.html</b>, which is shown in the following iframe.
+                    </li>
+                    <li>
+                        As last experiment, the home page will display a list of restaurant information. User 
+                        can press the <b>Heart</b> button to add these restaurant into the Favorite list. But we
+                        add the functionality to disabled the <b>Heart</b> botton if the restaurant is already in
+                        the list. 
+                    </li>
+                    <li>
+                        The samely, if we click on the <b>Favorite</b> link on navigation bar, <b>Favorite</b> view 
+                        rendersa list of favorited restaurants. Additionally, user can remove the restaurant from 
+                        the list by click on the <b>X</b> button.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="app3/BusinessApp.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="app3/BusinessApp.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5>PART1: Add two function in the service:</h5>
+                <h5> - Javascript Snippet (AppServices.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">var services = angular.module('appServices', []);
+services.factory('favorateService', [
+    function () {
+        ...
+        var removeFavorite = function ($index) {
+            myFavorites.splice($index, 1);
+        };
+        var inFavorite = function (item) {
+            var index = myFavorites.indexOf(item);
+            return index &gt;= 0;
+        };
+        return {
+            ...
+            removeFavorite: removeFavorite,
+            inFavorite: inFavorite
+        };
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        Create and implement functions <code>removeFavorite($index)</code>, <code>inFavorites(item)</code>.
+                    </li>
+                    <li>
+                       Return the mapping of function names.
+                    </li>
+                </ol>
+                <h5>PART2: Call service function in <b>Home</b> and <b>Favorite</b> view controller:</h5>
+                <h5> - HTML Snippet (home.html)</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;business-item-operations&quot;&gt;
+    &lt;button class=&quot;btn btn-default&quot; ng-click=&quot;addFavorite(b)&quot;
+               ng-disabled=&quot;inFavorite(b)&quot;&gt;
+        &lt;span class=&quot;glyphicon glyphicon-heart&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">homeControllers.controller('homeCtrl', ['$scope', 'favorateService',
+    function ($scope, favorateService) {
+        ...
+        $scope.inFavorite = function (b) {
+            return favorateService.inFavorite(b);
+        };
+    }
+]);</code></pre>
+                <h5> - HTML Snippet (favorite.html)</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;business-item-operations&quot;&gt;
+    &lt;button class=&quot;btn btn-default&quot; ng-click=&quot;removeFavorite($index)&quot;&gt;
+        &lt;span class=&quot;glyphicon glyphicon-remove&quot;&gt;
+        &lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <h5> - Javascript Snippet (FavoriteControllers.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">favoriteControllers.controller('favoriteCtrl', ['$scope', 'favorateService',
+    function ($scope, favorateService) {
+        ...
+        $scope.removeFavorite = function (item) {
+            favorateService.removeFavorite(item);
+            $scope.businessList = favorateService.getFavorites();
+        };
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        Set directive <code>ng-disable</code> of <code>&lt;button&gt;</code> in <b>home.html</b> to 
+                        <b>homeCtrl</b> function <code>inFavorites(b)</code>, in Which it calls the service function
+                        <code>favorateService.inFavorites(b)</code>. This function checks if the corresponsing
+                        restaurant item is already in the list. And the <code>&lt;button&gt;</code> will be disable
+                        if it returns true.
+                    </li>
+                    <li>
+                        Add a <code>&lt;button&gt;</code> to <b>favorite.html</b> and set directive <code>ng-click</code>
+                        to <b>favoriteCtrl</b> function <code>removeFavorites(item)</code>, in Which it calls the service function
+                        <code>favorateService.removeFavorite(b)</code> and set the variable <b>businessList</b> of 
+                        <code>$scope</code> to the return value of <code>favorateService.getFavorites()</code>
+                    </li>
+                </ol>
+               
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/BusinessApp.html">BusinessApp.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/partials/home.html">home.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/partials/favorite.html">favorite.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/js/AppServices.js">AppServices.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/js/BusinessApp.js">BusinessApp.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/js/HomeControllers.js">HomeControllers.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app3/js/FavoriteControllers.js">FavoriteControllers.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

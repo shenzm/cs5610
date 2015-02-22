@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.footer {
+    padding-top: 20px;
+    margin-bottom: 10px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.experiment-items {
+    margin: 20px 0px;
+}
+
+.experiment-items p + h4 {
+    margin-top: 28px;
+}
+
+.scroll-overflow {
+    overflow: scroll ;
+    word-wrap: normal;
+}
+
+.experiment-iframe {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    width: 100%;
+    height: 300px;
+}
+
+.btn-top-left {
+    position: absolute;
+    left: 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 0px;
+}

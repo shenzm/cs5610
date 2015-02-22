@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week5-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week5 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Routing and Service</h3>
+            <div>
+                This experiment is based on last experiment, other than multiple views, it also defines 
+                a service with some useful functions that can be used across these views.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is on <b>BusinessApp.html</b>, which is shown in the following iframe.
+                    </li>
+                    <li>
+                        On default, the home page will display a list of restaurant information. User 
+                        can press the <b>Heart</b> button to add these restaurant into the Favorite list which
+                        can be viewed under the <b>Favorite</b> view.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="app2/BusinessApp.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="app2/BusinessApp.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5>PART1: Create a service that can be used by all view:</h5>
+                <h5> - Javascript Snippet (AppServices.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">var services = angular.module('appServices', []);
+services.factory('favorateService', [
+    function () {
+        var myFavorites = [];
+        var addFavorite = function (item) {
+            myFavorites.push(item);
+        };
+        var getFavorites = function () {
+            return myFavorites;
+        };
+        return {
+            addFavorite: addFavorite,
+            getFavorites: getFavorites
+        };
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        Define a module named <b>appServices</b>, add create a service named 
+                        <b>favorateService</b> in it.
+                    </li>
+                    <li>
+                        Initilze a variable named <b>myFavorites</b> to store the list of favorite restaurant.
+                    </li>
+                    <li>
+                        Create and implement functions <code>addFavorite(item)</code>, <code>getFavorites()</code>.
+                    </li>
+                    <li>
+                       Return the mapping of function names.
+                    </li>
+                </ol>
+                <h5>PART2: Call service function in <b>Home</b> and <b>Favorite</b> view controller:</h5>
+                <h5> - HTML Snippet (home.html)</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;business-item-operations&quot;&gt;
+    &lt;button class=&quot;btn btn-default&quot; ng-click=&quot;addFavorite(b)&quot;&gt;
+        &lt;span class=&quot;glyphicon glyphicon-heart&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">homeControllers.controller('homeCtrl', ['$scope', 'favorateService',
+    function ($scope, favorateService) {
+        $scope.addFavorite = function (b) {
+            favorateService.addFavorite(b);
+        };
+    }
+]);</code></pre>
+                <h5> - HTML Snippet (favorite.html)</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;p&gt;My Favorite:&lt;/p&gt;
+&lt;ul class=&quot;business-item-list&quot;&gt;
+    &lt;li ng-repeat=&quot;b in businessList&quot;&gt;
+        &lt;div class=&quot;row business-item&quot;&gt;
+            &lt;img class=&quot;business-item-thumbnail&quot;
+                 src=&quot;../../../../images/week5/default-image.jpg&quot; /&gt;
+            &lt;div class=&quot;col-sm-3 col-xs-12 business-item-info&quot;&gt;
+                &lt;h4&gt;{{b.name}}&lt;/h4&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <h5> - Javascript Snippet (FavoriteControllers.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">favoriteControllers.controller('favoriteCtrl', ['$scope', 'favorateService',
+    function ($scope, favorateService) {
+        $scope.businessList = favorateService.getFavorites();
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        Set directive <code>ng-click</code> of <code>&lt;button&gt;</code> to 
+                        <b>homeCtrl</b> function addFavorite(b), in Which it calls the service function
+                        <code>favorateService.addFavorite(b)</code>.
+                    </li>
+                    <li>
+                        In <b>favoriteCtrl</b> set the <b>businessList</b> of <code>$scope</code> to 
+                        the return value of service function <code>favorateService.getFavorites()</code>.
+                    </li>
+                </ol>
+               
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/BusinessApp.html">BusinessApp.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/partials/home.html">home.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/partials/favorite.html">favorite.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/js/AppServices.js">AppServices.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/js/BusinessApp.js">BusinessApp.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/js/HomeControllers.js">HomeControllers.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app2/js/FavoriteControllers.js">FavoriteControllers.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

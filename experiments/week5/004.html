@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week5-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week5 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Bootstrap - Modal SignIn Dialog</h3>
+            <div>
+                This experiment use Bootstrap's Modal utility to display a signin dialog that float above
+                the home page when ever the sign link on the navigation bar is clicked. 
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths experiment is on <b>Home.html</b>, which is shown in the following iframe.
+                    </li>
+                    <li>
+                        On default, the home page displays, and the <b>signin</b> link will be shown at the right
+                        of the navigation bar.
+                    </li>
+                    <li>
+                        If click on the <b>Signin</b> link, then a signin dialog would show in front of the home page, 
+                        and use the home page as a background.
+                    </li>
+                    <li>
+                        User can then sign in using this dialog.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="app4/Home.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="app4/Home.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+    &lt;li&gt;
+        &lt;a class=&quot;signin-a-tag&quot; data-toggle=&quot;modal&quot; data-target=&quot;#signinModal&quot;&gt;Sign In&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+...
+&lt;div id=&quot;signinModal&quot; class=&quot;modal fade&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot;
+     aria-labelledby=&quot;myModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;...&lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <ol>
+                    <li>
+                        Include the <b>bootstrap.min.js</b>, <b>bootstrap.min.css</b> and <b>jquery.min.js</b>
+                    </li>
+                    <li>
+                        Create a link with <code>&lt;a&gt;</code>, set its attribute <code>data-toggle</code>
+                        to <b>model</b>, and point the <code>data-target</code> to id <b>#signinModal</b>, so 
+                        that the link would trigger the display of the <code>&lt;div&gt;</code> with id 
+                        <b>#signinModal</b>
+                    </li>
+                    <li>
+                        Create a initially hidden <code>div</code> with class <b>modal</b> and <b>fade</b>,
+                        add <code>div</code> with class <b>modal-dialog</b> in it. And <code>div</code> 
+                        with class <b>modal-header</b> and <b>modal-body</b> in it.  
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app4/Home.html">Home.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app4/Home.css">Home.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/javascript/#modals">
+                            Bootstrap - Javascript
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week5-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week5 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Bootstrap - Accordian Like Panels</h3>
+            <div>
+                This experiment use Bootstrap's Collapse utility to display an accordian like panel group.
+                This panel is usually used to display set of paragraphs and its title. 
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths experiment is on <b>Home.html</b>, which is shown in the following iframe.
+                    </li>
+                    <li>
+                        On default, the home page displays and the content #1 will be shown at first. Other
+                        panel will be in folded state.
+                    </li>
+                    <li>
+                        If click on the title of each panel, it will toggle collapse to the panel. And notice
+                        that only one panel will be open at a time.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="app5/Home.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="app5/Home.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;div class=&quot;panel-group&quot; id=&quot;accordion&quot; role=&quot;tablist&quot; aria-multiselectable=&quot;true&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;headingOne&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;
+                &lt;a data-toggle=&quot;collapse&quot; data-parent=&quot;#accordion&quot; href=&quot;#collapseOne&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;collapseOne&quot;&gt;
+                    ...
+                &lt;/a&gt;
+            &lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;collapseOne&quot; class=&quot;panel-collapse collapse in&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;headingOne&quot;&gt;
+            &lt;div class=&quot;panel-body&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                <ol>
+                    <li>
+                        Include the <b>bootstrap.min.js</b>, <b>bootstrap.min.css</b> and <b>jquery.min.js</b>
+                    </li>
+                    <li>
+                        Create a <code>&lt;div&gt;</code> of class <b>panel-group</b>, in which we need to create
+                        a list of panels 
+                    </li>
+                    <li>
+                        Each <code>&lt;div&gt;</code> of class <b>panel-heading</b> is paired up with a 
+                        <code>&lt;div&gt;</code> of class <b>panel-collapse</b>, which enclosed a 
+                        <code>&lt;div&gt;</code> of class <b>panel-body</b>
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app5/Home.html">Home.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app5/Home.css">Home.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/javascript/#collapse">
+                            Bootstrap - Javascript
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

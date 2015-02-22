@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week5-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week5 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS - Routing and Multiple Views</h3>
+            <div>
+                This experiment use AngularJS's routing module called 'ngRoute' to build a single-page
+                app that has multiple views, which can jump between each other, using a common navigation
+                bar. 
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is on <b>routeApp.html</b>, which is shown in the following iframe.
+                    </li>
+                    <li>
+                        On default, the home page content will display when we input the url of <b>routeApp.html</b>.
+                        Notice that, "<b> #/ </b>" is added at the end of its url.
+                    </li>
+                    <li>
+                        If we click on the one of the link on navigation bar, for example <b>Partial 1</b>, the iframe/browser 
+                        stays on the same page, but the content has been change to the content of Partial One. Notice that, 
+                        "<b> #/partial1 </b>" is added at the end of its url.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="app1/routeApp.html">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="app1/routeApp.html"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                How to write a simple page app that can react to button click event?
+                <h5> - HTML Snippet</h5>
+                <pre><code class="language-markup scroll-overflow">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js&quot;&gt;&lt;/script&gt;
+...
+&lt;body ng-app=&quot;routeApp&quot;&gt;
+    &lt;nav class=&quot;navbar navbar-default&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;div class=&quot;navbar-header&quot;&gt;
+                ...
+                &lt;a class=&quot;navbar-brand&quot; href=&quot;#/&quot;&gt;Home&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div id=&quot;myNavbar&quot; class=&quot;collapse navbar-collapse&quot;&gt;
+                &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#/partial1&quot;&gt;Partial1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#/partial2&quot;&gt;Partial2&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;content&quot; ng-view&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                <ol>
+                    <li>
+                        Include the <b>angular.min.js</b>, <b>angular-route.min.js</b> and <b>routeApp.js</b>
+                    </li>
+                    <li>
+                        Set directive <code>ng-app</code> of <code>&lt;body&gt;</code> to the name of the app
+                        <code>routeApp</code>, to auto-bootstrap an AngularJS application.
+                    </li>
+                    <li>
+                        Add a <code>nav</code> section right under <code>&lt;body&gt;</code> section, so it
+                        can be used across all views.
+                    </li>
+                    <li>
+                        Set directive <code>ng-view</code>, and the corresponding <code>&lt;body&gt;</code>
+                        will be redenered according to the <code>routeApp</code>'s config.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">var app = angular.module("routeApp", ['ngRoute']);
+app.config(['$routeProvider',
+  function ($routeProvider) {
+      $routeProvider.
+        when('/', {
+            templateUrl: 'partials/home.html'
+        }).
+        when('/partial1', {
+            templateUrl: 'partials/partial1.html'
+        }).
+        when('/partial2', {
+            templateUrl: 'partials/partial2.html'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+  }]);</code></pre>
+
+                <ol>
+                    <li>
+                        Add <code>ngRoute</code> as a replying module for app.
+                    </li>
+                    <li>
+                        Call the <code>config</code> function of the application, and use
+                        <code>$routeProvider</code> as a input parameter.
+                    </li>
+                    <li>
+                        Call the <code>when</code> function of <code>$routeProvider</code> to 
+                        match url postfix with actual url, by setting templateUrl variable.
+                    </li>
+                    <li>
+                        Call the <code>othersise</code> function of <code>$routeProvider</code> to
+                        redirect unmatched url postfix to home page.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app1/routeApp.html">GetAvatar.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week5/app1/js/routeApp.js">GetAvatar.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>
