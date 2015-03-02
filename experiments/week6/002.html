@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week6-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week6 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Openshift - JSON NodeJS response</h3>
+            <div>
+                This experiment creates an Openshift hosted application, which works as a web API that 
+                can reply clients request with a JSON document.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe. It's continuation of Experiment1
+                    </li>
+                    <li>
+                        JSON is a Javascript based data-interchange format wildly used by WEB APIs. We make use of this 
+                        easily readable and parsable format to response back the client with previously defined data.  
+                    </li>
+                    <li>
+                        User can input the following link to see the JSON response: <br />
+                        <a href="http://nodejsexp-zhenmins.rhcloud.com/api/courses">
+                            http://nodejsexp-zhenmins.rhcloud.com/api/courses
+                        </a>
+                    </li>
+                    <li>
+                        And they can also retrieve specific item from the JSON object by adding their <b>/id</b>
+                        after the url<br />
+                        <a href="http://nodejsexp-zhenmins.rhcloud.com/api/courses/cs6240">
+                            http://nodejsexp-zhenmins.rhcloud.com/api/courses/cs6240
+                        </a>
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp-zhenmins.rhcloud.com/api/courses">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <img class="experiment-img" src="../../images/week6/exp2.jpg" />
+                <!-- To change -->
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">var courses = [
+    { id: "cs5610", name: "Web Development" },
+    { id: "cs6240", name: "Parallel Programming" },
+    { id: "cs6740", name: "Network Security" }
+];
+app.get("/api/courses", function (req, res) {
+    res.json(courses);
+});
+app.get("/api/courses/:id", function (req, res) {
+    for(var i in courses){
+        if (req.params.id == courses[i].id) {
+            res.json(courses[i]);
+            return;
+        }
+    }
+});</code></pre>
+                <ol>
+                    <li>
+                        Initialize a variable <code>courses</code> to store the course information data.
+                    </li>
+                    <li>
+                        Set the GET request on url <b>/api/courses</b> to be handle by a function, in which
+                        response the JSON text of all courses
+                    </li>
+                    <li>
+                        Set the GET request on url <b>/api/courses/:id</b> to be handle by a function, in which
+                        it retrieve one of the course element with the same <code>id</code> of the request parameter 
+                        <code>req.params.id</code>
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/002/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

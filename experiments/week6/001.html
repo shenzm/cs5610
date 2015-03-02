@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week6-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week6 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Openshift - Static Welcome Page</h3>
+            <div>
+                This experiment creates an Openshift hosted application, which is based on Express module of NodeJS.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Node.js is a cross-platform runtime environment for server-side application. And Express is
+                        the most sophisticated web framework for Node.js. And they are both supported on OpenShift,
+                    </li>
+                    <li>
+                        To host my web application on Openshift, I first sign up for Openshift, and then create an
+                        Node.js applicaition on Openshift. Openshift provide an ssh git repo that stores my the inital
+                        code, so that we coould clone, modify and update our web application right through Git.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp-zhenmins.rhcloud.com/">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp-zhenmins.rhcloud.com/"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">var express = require('express');
+var app = express();
+app.use(express.static(__dirname + '/static'));
+                    
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+app.listen(port, ip);</code></pre>
+                <ol>
+                    <li>
+                        Requires <b>express</b> module, and create an <b>Express</b> app
+                    </li>
+                    <li>
+                        Using the <b>express.static</b> middleware in the app, to serve static content 
+                        for the app from the “static” directory in the application directory
+                    </li>
+                    <li>
+                        To run the application both locally and on openshift. Set variable <code>ip</code> and
+                        <code>port</code> as an ORed variable, which will change acoording to the running environment. 
+                        And set the app listen to the ip and port.
+                    </li>
+                </ol>
+                <h5> - HTML Snippet </h5>
+                <pre><code class="language-markup scroll-overflow">&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h2&gt;Zhenming Shen, Welcome!&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+                <ol>
+                    <li>
+                        It a basic welcome information
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/001/index.html">index.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/001/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

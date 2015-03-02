@@ -33,6 +33,11 @@
     height: 300px;
 }
 
+.experiment-img {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
 .btn-top-left {
     position: absolute;
     left: 0;

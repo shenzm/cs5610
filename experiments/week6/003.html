@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week6-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week6 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Openshift - AgularJS App</h3>
+            <div>
+                This experiment try to host a static Angular JS application on Openshift. This is based
+                on WEEK5 Experiement3, which is single page business info favoriting app that 
+                support routing between different views.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        The application is the same one as WEEK5-EXP3, which is a single page application.
+                        The first page lists all the restaurant, and user can choose some of them in the
+                        list to favorite them. And the favorited business would be added to the list, and
+                        be display in the other view, if user click the <b>Favorite</b> navigation link.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp-zhenmins.rhcloud.com/app">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp-zhenmins.rhcloud.com/app"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">app.use('/app', express.static(__dirname + '/app'));</code></pre>
+                <ol>
+                    <li>
+                        Using the express.static middleware in the app, to serve static content 
+                        for the application from the “app” directory in the application directory. The 
+                        "app" has an <b>index.html</b>, which will be defaultly rendered by the
+                        server if no other url postfix is provided.
+                    </li>
+                    <li>
+                        Other than that, we have to copy the whole directory from the WEEK5-EXP3,
+                        so as to support the Angular JS app running on the openshift.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/003/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

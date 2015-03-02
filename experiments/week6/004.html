@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week6-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week6 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Openshift - AgularJS App II</h3>
+            <div>
+                This experiment is an upgrade for the last experiments. The downloaded client side javascript 
+                use the predefined server side API, to retrieve data from server's memory. Notice that the
+                favorite information is stored in server memory. 
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        The application upgrade the last experiment. In the last experiment, the favorite
+                        information will go away if the page is refreshed, since it operates only on front
+                        end, and the temporary storage will go away during page refresh. But the upgrade
+                        application calls server API to retrieve and stored the data in server memory. 
+                        Although it is not a practical way to implement persistence, it still can prevent
+                        the favorite information from refreshed away, as long as the server is not restarted.   
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp-zhenmins.rhcloud.com/app2">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp-zhenmins.rhcloud.com/app2"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (servser.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+var businessList = [
+    { id: '1', name: "Giacomo's Ristorante", category: 'Italian', price: '20', rating: '4.0' },
+    { id: '2', name: 'The Salty Pig', category: 'Italian', price: '40', rating: '4.5' },
+    { id: '3', name: 'Locale', category: 'Italian', price: '15', rating: '4.5' }
+];
+app.get("/api/businessList", function (req, res) {
+    res.json(businessList);
+});
+app.use('/app2', express.static(__dirname + '/app2'));</code></pre>
+                <ol>
+                    <li>
+                        Define an initial variable <code>businessList</code> in <b>server.js</b> 
+                    </li>
+                    <li>
+                        Map the get request on url <b>/api/businessList</b> to a JSON response of the
+                        businessList. In another word, create a web api that returns the JSON formatted
+                        businessList.
+                    </li>
+                    <li>
+                        Using the express.static middleware in the app, to serve static content 
+                        for the application from the “app2” directory in the application directory. The 
+                        "app2" has an <b>index.html</b>, which will be defaultly rendered by the
+                        server if no other url postfix is provided.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+$http.get("/api/businessList")
+    .success(function (response) {
+        $scope.businessList = response;
+});</code></pre>
+                <ol>
+                    <li>
+                        Use <code>$http</code> to make an AJAX request to the server.
+                    </li>
+                    <li>
+                        The url <b>/api/businessList</b> is used to retrieve data from server side.
+                    </li>
+                    <li>
+                        Set the scope variable <code>$scope.businessList</code> to the API response.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/004/server.js">server.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/004/HomeController.js">HomeController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

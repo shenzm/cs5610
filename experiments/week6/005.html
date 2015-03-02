@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week6-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week6 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Openshift - AgularJS App III</h3>
+            <div>
+                This experiment is an improved version of last experiement, it adds more API's on the 
+                server-side, so the client side script can provide more functions to the user.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Besides the function on home page to retrieve businessList from server. This
+                        experiement also supports the function of adding and removing a business to 
+                        favorite list.    
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp-zhenmins.rhcloud.com/app3">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp-zhenmins.rhcloud.com/app3"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (servser.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+var bodyParser = require('body-parser');
+var multer = require('multer');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+...
+var myFavorites = [];
+app.get("/api/favorites", function (req, res) {
+    res.json(myFavorites);
+});
+app.post("/api/favorite", function (req, res) {
+    myFavorites.push(req.body);
+    res.json(req.body);
+});
+app.delete("/api/favorite/:id", function (req, res) {
+    myFavorites.splice(req.params.id, 1);
+    res.json(myFavorites);
+});
+app.use('/app3', express.static(__dirname + '/app3'));</code></pre>
+                <ol>
+                    <li>
+                        Add two more modules for the application <code>body-parser</code> and <code>multer</code>.
+                        These module are used to parser the request body of POST request. Remeber to install
+                        these modules from terminal before start useng them.
+                    </li>
+                    <li>
+                        Define an initial variable <code>myFavorite</code> in <b>server.js</b> to store a list
+                        of favorite businesses.
+                    </li>
+                    <li>
+                        Map the GET request on url <b>/api/favorites</b> to a JSON response of the
+                        <code>myFavorite</code>. In another word, create a web api that returns the
+                        JSON formatted <code>myFavorite</code>.
+                    </li>
+                    <li>
+                        Map the POST request on url <b>/api/favorite</b> to the server code to add a new element
+                        in the favorite list. The request body contains the element to add.
+                    </li>
+                    <li>
+                        Using the express.static middleware in the app, to serve static content 
+                        for the application from the “app3” directory in the application directory. The 
+                        "app3" has an <b>index.html</b>, which will be defaultly rendered by the
+                        server if no other url postfix is provided.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+$scope.addFavorite = function (b) {
+    $http.post("/api/favorite", b)
+    .success(function (response) {
+        console.log("Add Success");
+    });
+};</code></pre>
+                <ol>
+                    <li>
+                        Use <code>$http</code> to make an AJAX POST request to the server, and include the
+                        business element into the request body.
+                    </li>
+                    <li>
+                        The url <b>/api/favorite</b> is used to insert data into the server side.
+                    </li>
+                    <li>
+                        Encapsulate this process as a function, add pass it to <code>$scope.addFavorite</code>,
+                        which would be called when the "Favorite" button is clicked.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (FavoriteController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+$http.get("/api/favorites")
+    .success(function (response) {
+        $scope.businessList = response;
+});;</code></pre>
+                <ol>
+                    <li>
+                        During the loading of <b>Favorite</b> view, use <code>$http</code> to make
+                        an AJAX GET request to the server.
+                    </li>
+                    <li>
+                        The url <b>/api/favorites</b> is used to retrieve favorite list from server side.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/005/server.js">server.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/005/HomeController.js">HomeController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week6/005/FavoriteController.js">FavoriteController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

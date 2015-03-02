@@ -8,3 +8,4 @@
 ../story/index.htm?../experiments/week3/        WEEK 3: javascript and jQuery
 ../story/index.htm?../experiments/week4/        WEEK 4: AngularJS and Ajax
 ../story/index.htm?../experiments/week5/        WEEK 5: AngularJS Advance & Bootstrap JS
+../story/index.htm?../experiments/week6/        WEEK 6: Host NodeJS server app on Openshift
