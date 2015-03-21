@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week7-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week7 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Mongoose - Retrieve Data from MongoDB II</h3>
+            <div>
+                This experiment updates last week's experiment. The favorite page controller retrieves favorite
+                relation record from the MongoDB, which calls the server's API.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Since we have already inserted some sample favorite record using RockMongo in previous
+                        experiment, we can retrieve this inserted restaurant record from MongoDB using
+                        Mongoose module of NodeJS.
+                    </li>
+                    <li>
+                        Mongoose is a Node.js library that provides MongoDB object mapping similar to ORM with
+                        a familiar interface within Node.js
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/app2/#/favorite">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/app2/#/favorite"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js)</h5>
+                    <pre><code class="language-javascript scroll-overflow">var FavoriteSchema = new mongoose.Schema({
+    restaurantId: String, userId: String
+}, { collection: 'Favorites', versionKey: false });
+
+var FavoriteModel = mongoose.model('Favorites', FavoriteSchema);</code></pre>
+                <ol>
+                    <li>
+                        Define a Schema named <code>FavoriteSchema</code> for the data record of
+                        collection <code>Favorites</code>.
+                    </li>
+                    <li>
+                        Define a Model named <code>FavoriteModel</code> for the collection
+                        <code>Favorites</code>, which will be used to retrieve data records.
+                    </li>
+                </ol>
+
+                <h5> - Javascript Snippet (server.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">app.use('/app2', express.static(__dirname + '/app2'));
+
+app.get('/api/favorites', function (req, res){
+    FavoriteModel
+        .find(function (err, data) {
+            var favoriteRestaurantIDs = [];
+            for(var i = 0; i < data.length; i++) {
+                favoriteRestaurantIDs.push(data[i].restaurantId);
+            }
+            RestaurantModel
+                .find()
+                .where("_id").in(favoriteRestaurantIDs)
+                .exec(function(err, result) {
+                    res.json(result);
+                });
+        });
+});</code></pre>
+                <ol>
+                    <li>
+                        Map the GET request on url <b>'/api/favorites'</b> to the inline function, in which
+                        we use <code>FavoriteModel</code> to find all the restaurants.
+                    </li>
+                    <li>
+                        In the callback function of <code>FavoriteModel.find()</code>, gathers all the IDs of the
+                        favorite restaurants. And use the predefined <code>RestaurantModel</code> to retrieve
+                        all the restaurants records according to these IDs.
+                    </li>
+                </ol>
+
+                <h5> - Javascript Snippet (FavoriteController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">var favoriteController = angular.module("favoriteController", []);
+
+favoriteController.controller("FavoriteController", ["$scope", "$http",
+    function ($scope, $http) {
+        $http
+            .get("/api/favorites")
+            .success(function (response) {
+                $scope.businessList = response;
+            });
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        In favoriteController, use <code>$http.get</code> method to call the server's API of retrieving
+                        all the favorite records from mongoDB.
+                    </li>
+                    <li>
+                        If get method succeed, the inline callback function runs and sets the variable
+                        <code>$scope.businessList</code> to the responded favorite record list.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/003/FavoriteController.js">FavoriteController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/003/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://mongoosejs.com/docs/guide.html">
+                            Mongoose Docs
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

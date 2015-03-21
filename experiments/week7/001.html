@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week7-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week7 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>RockMongo - Web based MongoDB UI Manager</h3>
+            <div>
+                This experiment focus on manipulating/managing mongodb cartridge on openshift using another
+                cartridge named RockMongo
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        MongoDB does not include a GUI-style administrative interface. Instead most administration
+                        is done from command line tools such as the mongo shell. However some UI’s are available
+                        as separate community projects.
+                    </li>
+                    <li>
+                        RockMongo is one of these projects and it is supported on openshift. It's a web-based
+                        MongoDB management tool, written in PHP 5. We can use it to insert some sample data
+                        for our apps.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="../../images/week7/img1.jpg">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="../../images/week7/img1.jpg"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="../../images/week7/insert.jpg">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="../../images/week7/insert.jpg"></iframe>
+            </p>
+            <p>
+                <h5> - JSON Snippet</h5>
+                <pre><code class="language-javascript scroll-overflow">{
+    name: "Locale",
+    category: 'Italian',
+    price: '15',
+    rating: '4.0'
+}</code></pre>
+                <ol>
+                    <li>
+                        As we can see in the RockMongo UI, we can easily do database operations such as
+                        <b>insert</b>, <b>clear</b>. And for the existing records, we can also choose to
+                        <b>Update</b>, <b>Delete</b> them.
+                    </li>
+                    <li>
+                        To insert a record into the remote mongodb cartridge, we just need to input a data
+                        record in JSON format, as shown in the code above.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/002.html">002.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://docs.mongodb.org/ecosystem/tools/administration-interfaces/">
+                            MongoDB Admin UI
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://rockmongo.com/">
+                            RockMongo
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

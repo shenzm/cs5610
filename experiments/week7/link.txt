@@ -1,0 +1,10 @@
+﻿  !title=Week7 Experiments List
+  !pagetitle=WEEK 7: Access MongoDB with Mongoose/RockMongo
+  !comment=Links for each experiments:
+  !hr
+
+001.html         RockMongo - Web based MongoDB UI Manager
+002.html         Mongoose - Retrieve Data from MongoDB
+003.html         Mongoose - Retrieve Data from MongoDB II
+004.html         Mongoose - Insert Data into MongoDB
+005.html         Mongoose - Remove Data from MongoDB

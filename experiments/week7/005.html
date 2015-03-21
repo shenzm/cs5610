@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week7-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week7 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Mongoose - Remove Data from MongoDB</h3>
+            <div>
+                This experiment updates last week's experiment. The favorite page controller can remove a favorite
+                relation record from the MongoDB by pressing the "cross" button, which calls the server's API.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Since we have already support showing the favorite restaurants record in the <b>Favorite</b>
+                        view, we start implementing removing favorite record from MongoDB using Mongoose module.
+                        The result of removing favorite restaurant can be justified bychecking <b>Favorite</b> view,
+                        which will update automatically after removing.
+                    </li>
+                    <li>
+                        Mongoose is a Node.js library that provides MongoDB object mapping similar to ORM with
+                        a familiar interface within Node.js
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/app4/#/favorite">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/app4/#/favorite"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js)</h5>
+                    <pre><code class="language-javascript scroll-overflow">function getFavoriteRestaurants (req, res){
+    FavoriteModel
+        .find(function (err, data) {
+            var favoriteRestaurantIDs = [];
+            for(var i = 0; i < data.length; i++) {
+                favoriteRestaurantIDs.push(data[i].restaurantId);
+            }
+            RestaurantModel
+                .find()
+                .where("_id").in(favoriteRestaurantIDs)
+                .exec(function(err, result) {
+                    res.json(result);
+                });
+        });
+}</code></pre>
+                <ol>
+                    <li>
+                        Extract the logic of retrieving restaurant record from favorite list to a new function named
+                        <code>getFavoriteRestaurants</code>, this function can be used both in retrieving favorite
+                        restaurants and in deleting favorite restaurants, since the view have to be automatically
+                        updated after deletion.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (server.js)</h5>
+                        <pre><code class="language-javascript scroll-overflow">app.use('/app4', express.static(__dirname + '/app4'));
+app.delete('/api/favorite/:id', function (req, res){
+    FavoriteModel
+        .remove({ restaurantId: req.param('id') }, function (err) {
+            if(err)
+                console.log(err);
+            else
+                getFavoriteRestaurants(req, res);
+        })
+});</code></pre>
+                <ol>
+                    <li>
+                        Map the DELETE request on url <b>'/api/favorite/:id'</b> to the inline function, in which
+                        we use <code>FavoriteModel</code> to remove the restaurant with the specified restaurant
+                        ID from MongoDB.
+                    </li>
+                    <li>
+                        In the callback function of <code>FavoriteModel.remove()</code>, if <code>err</code>
+                        is not occurred, call the predefined function <code>getFavoriteRestaurants</code>,
+                        which will return the new favorite restaurant list in JSON format.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (FavoriteController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">$scope.removeFavorite = function(b) {
+    $http
+        .delete("/api/favorite/" + b._id)
+        .success(function (response) {
+            $scope.businessList = response;
+    });
+};</code></pre>
+                <ol>
+                    <li>
+                        In homeController, use <code>$http.delete</code> method to call the server's API of removing
+                        current restaurants from Favorite List, and save the change to mongoDB.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/005/FavoriteController.js">FavoriteController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/005/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://mongoosejs.com/docs/guide.html">
+                            Mongoose Docs
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

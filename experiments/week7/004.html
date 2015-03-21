@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week7-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week7 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Mongoose - Insert Data into MongoDB</h3>
+            <div>
+                This experiment updates last week's experiment. The home page controller insert a favorite
+                relation record into the MongoDB by pressing the "heart" button, which calls the server's API.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Since we have already support showing the favorite restaurants record in the <b>Favorite</b>
+                        view, we start implementing saving favorite record into MongoDB using Mongoose module of NodeJS.
+                        The result of adding favorite restaurant can be justified by checking <b>Favorite</b> view.
+                    </li>
+                    <li>
+                        Mongoose is a Node.js library that provides MongoDB object mapping similar to ORM with
+                        a familiar interface within Node.js
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/app3/#/">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/app3/#/"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js)</h5>
+                    <pre><code class="language-javascript scroll-overflow">app.use('/app3', express.static(__dirname + '/app3'));
+
+app.get('/api/restaurants/:id', function (req, res){
+    FavoriteModel
+        .find({ restaurantId: req.param('id') })
+        .exec(function(err, data){
+            if(data.length > 0) {
+                res.json({Status: "Exist"});
+            }
+            else {
+                var newFavoriteDoc = {
+                    restaurantId: req.param('id'),
+                    userId: 'testUserId'
+                };
+                var newFavorite = new FavoriteModel(newFavoriteDoc);
+                newFavorite.save(function (err) {
+                    if (err)
+                        res.json({Status: "Failed"});
+                    else
+                        res.json({Status: "Saved"});
+                });
+            }
+        });
+});</code></pre>
+                <ol>
+                    <li>
+                        Map the GET request on url <b>'/api/favorites/:id'</b> to the inline function, in which
+                        we use <code>FavoriteModel</code> to find the restaurants with the specified ID.
+                    </li>
+                    <li>
+                        In the callback function of <code>FavoriteModel.find()</code>, if the <code>data</code>
+                        is not an empty list, then we return a JSON response with a status shows the specified
+                        restaurant is already in the FavoriteList. Otherwise
+                    </li>
+                    <li>
+                        Otherwise, create a new Favorite Record named <code>newFavoriteDoc</code> with
+                        <code>FavoriteModel</code>, and save it to the MongoDB.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">$scope.addFavorite = function (b) {
+    $http
+        .get("/api/restaurants/" + b._id)
+        .success(function (response) {
+            console.log(response);
+        })
+};</code></pre>
+                <ol>
+                    <li>
+                        In homeController, use <code>$http.get</code> method to call the server's API of adding
+                        current restaurants into Favorite List, and save the change to mongoDB.
+                    </li>
+                    <li>
+                        Log the response of adding restaurant to favorite list to console, use can also check
+                        the result by open the <b>favorite</b> view of the app.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/004/HomeController.js">HomeController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/004/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://mongoosejs.com/docs/guide.html">
+                            Mongoose Docs
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

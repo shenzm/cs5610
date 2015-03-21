@@ -24,3 +24,8 @@ proguard/
 
 # Log Files
 *.log
+
+# Other Files
+images/
+.idea/
+.DS_Store

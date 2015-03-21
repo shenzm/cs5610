@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week7-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week7 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Mongoose - Retrieve Data from MongoDB</h3>
+            <div>
+                This experiment updates last week's experiment. The home page controller retrieves data
+                from the MongoDB by calling the server's API.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Ths app is hosted on Openshift and shown in the following iframe.
+                    </li>
+                    <li>
+                        Since we have already inserted some restaurant record using RockMongo in the last experiment,
+                        we can retrieve this inserted restaurant record from MongoDB using Mongoose module of NodeJS.
+                    </li>
+                    <li>
+                        Mongoose is a Node.js library that provides MongoDB object mapping similar to ORM with
+                        a familiar interface within Node.js
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/app1/#/">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/app1/#/"></iframe>
+            </p>
+            <h4>Code Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">var mongoose = require("mongoose");
+var db_url = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/';
+db_url += 'nodejsexp';
+mongoose.connect(db_url);</code></pre>
+                <ol>
+                    <li>
+                        Requires <b>mongoose</b> module, which can be used to communicate with <b>mongoDB</b>
+                    </li>
+                    <li>
+                        To access the database both locally and on openshift. Set variable <code>db_url</code>
+                        as an ORed variable, which will change according to the running environment. And append
+                        the database name <code>'nodejsexp'</code> as a postfix to the <code>db_url</code>.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (server.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">
+var RestaurantSchema = new mongoose.Schema({
+    name: String, category: String, price: Number, rating: Number
+}, { collection: 'Restaurants' });
+
+var RestaurantModel = mongoose.model('Restaurants', RestaurantSchema);
+
+app.get('/api/restaurants', function (req, res){
+    RestaurantModel.find(function (err, data) {
+        res.json(data);
+    });
+});</code></pre>
+                <ol>
+                    <li>
+                        Define a Schema named <code>RestaurantSchema</code> for the data record of
+                        collection <code>Restaurants</code>.
+                    </li>
+                    <li>
+                        Define a Model named <code>RestaurantModel</code> for the collection
+                        <code>Restaurants</code>, which will be used to retrieve data records.
+                    </li>
+                    <li>
+                        Map the GET request on url <b>'/api/restaurants'</b> to the inline function, in which
+                        we use <code>RestaurantModel</code> to find all the restaurants, and returns the data
+                        in a JSON formatted response.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (HomeController.js)</h5>
+                <pre><code class="language-javascript scroll-overflow">var homeController = angular.module("homeController", []);
+
+homeController.controller("HomeController", ["$scope", "$http",
+    function ($scope, $http) {
+        $http
+            .get("/api/restaurants")
+            .success(function (response) {
+                $scope.businessList = response;
+            });
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        In homeController, use <code>$http.get</code> method to call the server's API of retrieving
+                        all the restaurants from mongoDB.
+                    </li>
+                    <li>
+                        If get method succeed, the inline callback function runs and sets the variable
+                        <code>$scope.businessList</code> to the responded data.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/002/HomeController.js">HomeController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week7/002/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://mongoosejs.com/docs/guide.html">
+                            Mongoose Docs
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://expressjs.com/4x/api.html">
+                            Express - API 4.x
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>
