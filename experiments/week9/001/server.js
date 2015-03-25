@@ -1,6 +1,50 @@
-var mongoose = require("mongoose");
 var express = require("express");
+var mongoose = require("mongoose");
 var app = express();
+
+// week9 - app1 ++++++++++++++++++++
+
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var bodyParser = require("body-parser");
+var multer = require("multer");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: "this is the secret" }));
+app.use(multer());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(
+    function(username, password, done){
+        if(username == 'asd@asd.com' && password == 'asd')
+        {
+            var user = { firstName: 'Alice', lastName: 'Wonderland' };
+            return done(null, user);
+        }
+        return done(null, false, {message: 'Unable to login'});
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+app.post("/signin", passport.authenticate('local'), function (req, res){
+    res.json(req.user);
+});
+
+app.use('/week9/app1', express.static(__dirname + '/week9/app1'));
+
+// week9 - app1 ----------------------
 
 var db_url = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/';
 db_url += 'nodejsexp2';
@@ -13,7 +57,7 @@ var RestaurantSchema = new mongoose.Schema({
 
 var RestaurantModel = mongoose.model('Restaurants', RestaurantSchema);
 
-app.use('/001', express.static(__dirname + '/001'));
+app.use('/app1', express.static(__dirname + '/app1'));
 
 app.get('/api/restaurants', function (req, res){
     RestaurantModel.find(function (err, data) {
@@ -27,15 +71,11 @@ var FavoriteSchema = new mongoose.Schema({
 
 var FavoriteModel = mongoose.model('Favorites', FavoriteSchema);
 
-// app2
-
 app.use('/app2', express.static(__dirname + '/app2'));
 
 app.get('/api/favorites', function (req, res){
     getFavoriteRestaurants(req, res);
 });
-
-// app3
 
 app.use('/app3', express.static(__dirname + '/app3'));
 
@@ -61,8 +101,6 @@ app.get('/api/restaurants/:id', function (req, res){
             }
         });
 });
-
-// app4
 
 function getFavoriteRestaurants (req, res){
     FavoriteModel
@@ -91,8 +129,6 @@ app.delete('/api/favorite/:id', function (req, res){
                 getFavoriteRestaurants(req, res);
         })
 });
-
-
 
 var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week9-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week9 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Passport - Protect Server APIs</h3>
+            <div>
+                This experiment focus on protect a certain server side API by using the passport module.
+                Basically when the server side API is called, it intercepts and check if the user is already
+                authenticate before actually return the data.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Passport is authentication middleware for NodeJS. The application probably need to protect
+                        some of its web APIs from users that not signed in. We can define a authenticate service
+                        at backend to decide if the current user is logged in or not.
+                    </li>
+                    <li>
+                        Make use of AngularJS's routeProvider to specify conditions for certain routes and
+                        incorporate with predefined authentication service at backend.
+                    </li>
+                    <li>
+                        In the following web page, if user click the <b>Test protected API</b> without logging in,
+                        the newly opened web page will response with a message of "unauthorized".
+                    </li>
+                    <li>
+                        But if the user has already logged in before clicking the <b>Test protected API</b>,
+                        the web api can return successfully, with valid JSON data.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week9/app2/#/profile">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week9/app2/#/profile"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - JSON Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">var auth = function(req, res, next)
+{
+    if (!req.isAuthenticated())
+        res.send(401);
+    else
+        next();
+};
+
+app.get('/api/test', auth, function(req, res) {
+    res.json([{username: 123}, {username: 234}]);
+});
+
+app.use('/week9/app2', express.static(__dirname + '/week9/app2'));</code></pre>
+                <ol>
+                    <li>
+                        First define an function names <code>auth</code> to judge if the user that sends the
+                        request are already authenticated or not. If the request is authenticated, forward to
+                        next function in the request chain. Otherwise, return 401 directly.
+                    </li>
+                    <li>
+                        Then defines a mapping from a GET request on url <b>/api/test</b> with predefined
+                        <code>auth</code> function and another callback function that will returns list
+                        of username.
+                    </li>
+                    <li>
+                        map the url <b>/week9/app2</b> with the corresponding directory.
+                    </li>
+                </ol>
+                <h5> - HTML Snippet (profile.html) </h5>
+                    <pre><code class="language-markup scroll-overflow">&lt;a target=&quot;_blank&quot; href=&quot;/api/test&quot;&gt;Test protected API&lt;/a&gt;</code></pre>
+                <ol>
+                    <li>
+                        In the profile.html, define a hyperlink to call the server api at url <b>/api/test</b>
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/002/profile.html">profile.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/002/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://passportjs.org/guide/">
+                            Passport Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=dXkqNWLyJ7E&list=WL&index=1">
+                            Course Video
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

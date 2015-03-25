@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week9-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week9 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Passport - Integrate authentication with MongoDB</h3>
+            <div>
+                This experiment is based on the last few experiments, it focus on provide a simple
+                login function on the web application that integrated with the back end user data
+                persistence.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        In the following web page, if user click the <b>Profile</b> link on navigation
+                        bar, before logging in or getting a cookie. Then the page would be
+                        redirected to <b>Sign In</b> view.
+                    </li>
+                    <li>
+                        After the user logged in, the user can successfully access the <b>Profile</b>
+                        view by clicking the corresponding nav link.
+                    </li>
+                    <li>
+                        The functionality of this application is the same as the last experiment, but it saves
+                        and retrieves user data from database.
+                    </li>
+                    <li>
+                        Notice that it only stores the bCrypt encrypted password in the database.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week9/app3/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week9/app3/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+var UserSchema = new mongoose.Schema({
+    username: String, password: String,
+    firstName: String, lastName: String
+}, { collection: 'Users', versionKey: false });
+var UserModel = mongoose.model('Users', UserSchema);</code></pre>
+                <ol>
+                    <li>
+                        Define a <code>UserSchema</code> and <code>UserModel</code> for the persistance of
+                        user records in MongoDB
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+var bcrypt = require("bcrypt");
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        UserModel.findOne({ username: username }, function (err, user) {
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            var flag = bcrypt.compareSync(password, user.password);
+            if (flag == false) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        });
+    }
+));</code></pre>
+                <ol>
+                    <li>
+                        Require <b>bcrypt</b> module for the authentication strategy.
+                    </li>
+                    <li>
+                        Define a new LocalStrategy instance with a callback function, in which retrieves
+                        the one user record with the input username.
+                        <ul>
+                            <li>
+                                If error occurs during retrieve phase, return with error message
+                            </li>
+                            <li>
+                                If no user record is find, return with <code>false</code>, and send error
+                                messages "Incorrect username".
+                            </li>
+                            <li>
+                                Call <code>bcrypt.compareSync(password, user.password);</code> to check
+                                if the input password is correct. If correct send back the right user.
+                                Otherwise returns <code>false</code>, and send error messages "Incorrect password".
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (server.js) </h5>
+                    <pre><code class="language-javascript scroll-overflow">
+var hash = bcrypt.hashSync("my password", 10);\
+var newUser = UserModel({
+    username: "asdasd@asd.com", password: hash,
+    firstName: "ZZZ", lastName: "XXX"
+});
+
+newUser.save();
+                    </code></pre>
+                <ol>
+                    <li>
+                        First time running the app, insert a new user record for testing purpose, delete this
+                        piece of code before actually running the app.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/004/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://passportjs.org/guide/">
+                            Passport Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=dXkqNWLyJ7E&list=WL&index=1">
+                            Course Video
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

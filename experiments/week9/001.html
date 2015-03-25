@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week9-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week9 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Passport - Simple Authentication</h3>
+            <div>
+                This experiment focus on using passport module to authenticate user through a SignIn page.
+                Since passport package authentication mechanisms, known as strategies, as individual
+                modules, we only use local strategy to authenticate users.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Passport is authentication middleware for NodeJS. It is designed to serve a singular
+                        purpose: authenticate requests. When writing modules, encapsulation is a virtue, so
+                        Passport delegates all other functionality to the application. This separation of
+                        concerns keeps code clean and maintainable, and makes Passport extremely easy to
+                        integrate into an application.
+                    </li>
+                    <li>
+                        Passport recognizes that each application has unique authentication requirements.
+                        Authentication mechanisms, known as strategies, are packaged as individual modules.
+                        Applications can choose which strategies to employ, without creating unnecessary dependencies.
+                    </li>
+                    <li>
+                        If input correct username and password, the web app will jump to profile page.
+                        Otherwise, it stay at login page.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week9/app1/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week9/app1/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var bodyParser = require("body-parser");
+var multer = require("multer");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: "this is the secret" }));
+app.use(multer());
+app.use(passport.initialize());
+app.use(passport.session());</code></pre>
+                <ol>
+                    <li>
+                        Make sure to import necessary modules into the application using <code>require()</code>.
+                        Following are the necessary modules: <b>passport</b>, <b>passport-local</b>,
+                        <b>body-parser</b>, <b>multer</b>, <b>cookie-parser</b> and <b>expression-session</b>
+                    </li>
+                    <li>
+                        Mounting all the needed middleware from the required modules using <code>app.use()</code>
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (server.js) </h5>
+                    <pre><code class="language-javascript scroll-overflow">passport.use(new LocalStrategy(
+    function(username, password, done){
+        if(username == 'asd@asd.com' && password == 'asd') {
+            var user = { firstName: 'Alice', lastName: 'Wonderland' };
+            return done(null, user);
+        }
+        return done(null, false, {message: 'Unable to login'});
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+app.post("/signin", passport.authenticate('local'), function (req, res){
+    res.json(req.user);
+});
+
+app.use('/week9/app1', express.static(__dirname + '/week9/app1'));</code></pre>
+                <ol>
+                    <li>
+                        Set the <b>passport</b> module to use local strategy by calling <code>passport.use()</code>
+                    </li>
+                    <li>
+                        In the LocalStrategy instance, define a callback function, in which returns
+                        <code>done(null, user)</code> if the username is <b>'asd@asd.com'</b> and the password
+                        is <b>'asd'</b>. Otherwise returns <code>done(null, false, {message: ...})</code>
+                    </li>
+                    <li>
+                        Defines the two function <code>passport.serializeUser</code> and
+                        <code>passport.deserializeUser</code> that are used to encrypt and decrypt the user object
+                        when using session.
+                    </li>
+                    <li>
+                        Map the POST request on url <b>'/siginin'</b> with <code>passport.authenticate('local')</code>
+                        and a callback function that set the response to JSON encoded user object.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/001/SigninController.js">SigninController.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/001/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://passportjs.org/guide/">
+                            Passport Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=dXkqNWLyJ7E&list=WL&index=1">
+                            Course Video
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

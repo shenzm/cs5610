@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week9-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week9 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Passport/AngularJS - Access control on app views</h3>
+            <div>
+                This experiment focus on protecting a certain view on the client application. Application
+                page such as user profile should not be able to be accessed if user is not logged in.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        In the following web page, if user click the <b>Profile</b> link on navigation
+                        bar, before logging in or getting a cookie. Then the page would be
+                        redirected to <b>Sign In</b> view.
+                    </li>
+                    <li>
+                        After the user logged in, the user can successfully access the <b>Profile</b>
+                        view by clicking the corresponding nav link.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week9/app3/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week9/app3/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">app.get('/signedin', function(req, res){
+    res.send(req.isAuthenticated()? req.user: '0');
+});
+
+app.use('/week9/app3', express.static(__dirname + '/week9/app3'));</code></pre>
+                <ol>
+                    <li>
+                        Then defines a mapping from a GET request on url <b>/signedin</b> with a callback function
+                        that calls <code>req.isAuthenticated()</code> to judge if the request is authenticated
+                        and returns the corresponding user or '0' accordingly. Notice that this service api will be
+                        called from the client app.
+                    </li>
+                    <li>
+                        map the url <b>/week9/app3</b> with the corresponding directory.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (MSTrackerApp.js) </h5>
+                    <pre><code class="language-javascript scroll-overflow">msTrackerApp.config(['$routeProvider', '$httpProvider',
+    function ($routeProvider, $httpProvider) {
+        $routeProvider.
+        ...
+        when('/profile', {
+            templateUrl: 'partials/profile.html',
+            resolve: {
+                loggedin: checkSignedin
+            }
+        }).
+        ...
+    }]);
+
+var checkSignedin = function($q, $timeout, $http, $location, $rootScope)
+{
+    //$q - asynchronous communication to server
+    var deferred = $q.defer();
+
+    $http.get('/signedin').success(function(user)
+    {
+        $rootScope.errorMessage = null;
+        // User is Authenticated
+        if (user !== '0'){
+            $rootScope.currentUser = user;
+            deferred.resolve();
+        }
+        // User is Not Authenticated
+        else
+        {
+            $rootScope.errorMessage = 'You need to log in.';
+            deferred.reject();
+            $location.url('/signin');
+        }
+    });
+
+    return deferred.promise;
+};</code></pre>
+                <ol>
+                    <li>
+                        Define a <code>checkSignedin</code> function, in which either call
+                        <code>deferred.resolve()</code> or <code>deferred.reject()</code> according
+                        to if the user has logged in.
+                    </li>
+                    <li>
+                        In the routing process of <code>$routeProvider</code>, set a dependency for the
+                        url <b>'/profile'</b> to call the <code>checkSignedin</code> function and reacts
+                        accordingly in the function to different api results.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/003/MSTrackerApp.js">MSTrackerApp.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/003/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://passportjs.org/guide/">
+                            Passport Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=dXkqNWLyJ7E&list=WL&index=1">
+                            Course Video
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

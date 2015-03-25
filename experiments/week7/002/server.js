@@ -13,7 +13,7 @@ var RestaurantSchema = new mongoose.Schema({
 
 var RestaurantModel = mongoose.model('Restaurants', RestaurantSchema);
 
-app.use('/app1', express.static(__dirname + '/app1'));
+app.use('/001', express.static(__dirname + '/001'));
 
 app.get('/api/restaurants', function (req, res){
     RestaurantModel.find(function (err, data) {

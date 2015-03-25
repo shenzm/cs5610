@@ -10,3 +10,5 @@
 ../story/index.htm?../experiments/week5/        WEEK 5: AngularJS Advance & Bootstrap JS
 ../story/index.htm?../experiments/week6/        WEEK 6: Host NodeJS server app on Openshift
 ../story/index.htm?../experiments/week7/        WEEK 7: Access MongoDB with Mongoose/RockMongo
+#                                               WEEK 8: (Spring Break)
+../story/index.htm?../experiments/week9/        WEEK 9: Authentication and Access Protection

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week9-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week9 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Passport - Logout function</h3>
+            <div>
+                This experiment is based on the last few experiments, it provide a navigation link that
+                can logout from the web application.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        To test the <b>Logout</b> link, user first need to login.
+                    </li>
+                    <li>
+                        After login the application, user can access the <b>Profile</b> view.
+                    </li>
+                    <li>
+                        If the logged in user click <b>Logout</b>, page redirect to <b>home</b> view
+                        and user cannot access <b>Profile</b> view at this point.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week9/app4/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week9/app4/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+app.post('/signout', function(req, res){
+    req.logOut();
+    res.send(200);
+});
+
+app.use('/week9/app4', express.static(__dirname + '/week9/app4'));
+                </code></pre>
+                <ol>
+                    <li>
+                        Simply defines a post web api on url <b>/signout</b>, in which calls the
+                        <code>req.logOut()</code> function to logout the user from server side.
+                    </li>
+                    <li>
+                        map the url <b>/week9/app4</b> with the corresponding directory.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (NavController.js) </h5>
+                    <pre><code class="language-javascript scroll-overflow">
+var navController = angular.module("navController", []);
+navController.controller("NavController", ["$scope", "$http", "$location", "$rootScope",
+    function ($scope, $http, $location, $rootScope) {
+        $scope.signout = function() {
+            $http.post("/signout")
+            .success(function(){
+                $rootScope.currentUser = null;
+                $location.url("/home");
+            });
+        }
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        Define a signout function that calles the server API on url <b>/signout</b> to implement
+                        the signout function.
+                    </li>
+                    <li>
+                        Remember to refer this controller in the <b>index.html</b>, and call its <b></b> function
+                        by setting it to <code>ng-click</code>.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/005/server.js">server.js</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week9/005/NavController.js">NavController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://passportjs.org/guide/">
+                            Passport Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=dXkqNWLyJ7E&list=WL&index=1">
+                            Course Video
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>
