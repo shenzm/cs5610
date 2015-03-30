@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week10-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week10 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>UI - Advanced Sign Page</h3>
+            <div>
+                This experiment focus on redesign the sign in page, and provide links
+                to other user case, such as "Register" and "Forgot Password".
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, the user may use the provided <b>Register</b> link,
+                        if they don't already have an account. (Register page not invented yet)
+                    </li>
+                    <li>
+                        If the user has an account, they can directly login by inputting their username
+                        and password. Or if their forgot their password, they can use <b>Forgot Password?</b>
+                        link to reset their password.
+                    </li>
+                    <li>
+                        Username: aliceW (asd@asd.com)
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (signin.html) </h5>
+                <pre><code class="language-markup scroll-overflow">
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+        &lt;span class=&quot;input-group-addon&quot;&gt;
+            &lt;i class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;input class=&quot;form-control&quot; placeholder=&quot;Username&quot; type=&quot;text&quot;
+            ng-model=&quot;user.username&quot; autofocus required&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+...
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-xs-8&quot;&gt;
+        &lt;b&gt;&lt;a href=&quot;&quot;&gt;Forgot password?&lt;/a&gt;&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-xs-4 text-right&quot;&gt;
+        &lt;button class=&quot;btn btn-success&quot; type=&quot;submit&quot;
+        ng-click=&quot;signin(user)&quot;&gt;Sign in&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+                <ol>
+                    <li>
+                        User class "input-group" where a "input-group-addon" is supported to compose the input fields.
+                        These can provide user an intuitive look on the page. Also the input field has informative
+                        placeholder to remind user what to input.
+                    </li>
+                    <li>
+                        Notice that the two input field are mapped with <b>ng-model</b>, which will be used as
+                        parameters for the <b>ng-click</b> function <b>signin(user)</b>
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/003/signin.html">signin.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

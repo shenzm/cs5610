@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week10-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week10 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>UI - Profile Page I</h3>
+            <div>
+                This experiment build up the profile page of the user, which can be viewed by logged in users.
+                It provide basic information of the related user, as well as the app-related info.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Notice that we are trying to visit the profile page of the web application,
+                        but we will be redirected to signin page, if we are not previously logged in.
+                    </li>
+                    <li>
+                        After logged in we can see the profile page of the user. The profile page consist
+                        of two part, we will focus on the left-col in this experiment.
+                    </li>
+                    <li>
+                        Username: aliceW (asd@asd.com)
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/profile">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/profile"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (profile.html) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+&lt;div class=&quot;col-sm-3 left-col&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;header&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+            &lt;div class=&quot;text-center&quot;&gt;
+                &lt;img class=&quot;img-responsive thumbnail&quot; src=&quot;http://placehold.it/300x300&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;profile-summary&quot;&gt;
+                &lt;p&gt;
+                    FirstName: {{currentUser.firstName}}
+                &lt;/p&gt;
+                &lt;p&gt;
+                    LastName: {{currentUser.lastName}}
+                &lt;/p&gt;
+                &lt;p&gt;
+                    Email: {{currentUser.email}}
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <ol>
+                    <li>
+                        The <code>&lt;div&gt;</code> consist of a <b>header</b> and a <b>panel-body</b>.
+                    </li>
+                    <li>
+                        The <b>header</b> is used as a UI component, which only adds a bold line at the upper border.
+                    </li>
+                    <li>
+                        The <code>&lt;img&gt;</code> tag with class <b>thumbnail</b> is used to display the picture
+                        of the user, and the <code>&lt;div&gt;</code> tag with class <b>profile-summary</b> are used to
+                        display the basic information of the user.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/004/profile.html">profile.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+    </div>
+</body>
+</html>

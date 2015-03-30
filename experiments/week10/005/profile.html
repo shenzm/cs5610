@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="/week10/app1/css/profile.css">
+<div class="container panel panel-default my-panel">
+    <div class="panel-body profile">
+        <h3 class="thin text-center">User Profile</h3>
+
+        <hr>
+
+        <div class="col-sm-3 left-col">
+            <div class="panel panel-default">
+                <div class="header">
+
+                </div>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <img class="img-responsive thumbnail" src="http://placehold.it/300x300">
+                    </div>
+                    <div class="profile-summary">
+                        <p>
+                            FirstName: {{currentUser.firstName}}
+                        </p>
+                        <p>
+                            LastName: {{currentUser.lastName}}
+                        </p>
+                        <p>
+                            Email: {{currentUser.email}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9 right-col">
+            <div class="panel panel-default">
+                <div class="header">
+
+                </div>
+                <div class="tab-bar">
+                    <ul class="nav my-nav-tabs" ng-init="activeTab = 'Profile'">
+                        <li role="presentation" ng-class="{active: activeTab == 'Profile'}">
+                            <a ng-click="activeTab = 'Profile'">Profile</a>
+                            <span class="menu-active">
+                                <span class="caret"></span>
+                            </span>
+                        </li>
+                        <li role="presentation" ng-class="{active: activeTab == 'Favorites'}">
+                            <a ng-click="activeTab = 'Favorites'">Favorites</a>
+                            <span class="menu-active">
+                                <span class="caret"></span>
+                            </span>
+                        </li>
+                        <li role="presentation" ng-class="{active: activeTab == 'Friends'}">
+                            <a ng-click="activeTab = 'Friends'">Friends</a>
+                            <span class="menu-active">
+                                <span class="caret"></span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div ng-switch="activeTab">
+                        <div role="tabpanel" ng-switch-when="Profile">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">First Name:</label>
+                                                <div class="col-xs-7 controls">Mariah</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Last Name:</label>
+                                                <div class="col-xs-7 controls">Caraiban</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">User Name:</label>
+                                                <div class="col-xs-7 controls">Mariah</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Email:</label>
+                                                <div class="col-xs-7 controls">mariah@Vendroid.com</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">City:</label>
+                                                <div class="col-xs-7 controls">Los Angeles</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Country:</label>
+                                                <div class="col-xs-7 controls">United States</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Birthday:</label>
+                                                <div class="col-xs-7 controls">Jan 22, 1984</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Interests:</label>
+                                                <div class="col-xs-7 controls">Basketball, Web, Design, etc.</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Website:</label>
+                                                <div class="col-xs-7 controls"><a href="http://Vendroid.venmond.com">Vendroid.venmond.com</a></div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mgbt-xs-0">
+                                                <label class="col-xs-5 control-label">Phone:</label>
+                                                <div class="col-xs-7 controls">+1-234-5678</div>
+                                                <!-- col-sm-10 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" ng-switch-when="Favorites">Favorites</div>
+                        <div role="tabpanel" ng-switch-when="Friends">Friends</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

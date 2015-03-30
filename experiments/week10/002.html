@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week10-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week10 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>UI - Advanced navigation bar</h3>
+            <div>
+                This experiment focus on improve the existing navbar by adding the logic
+                to only expose certain links to users according to their login state.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, if user is not logged in, then only the <b>Sign In</b>
+                        link shows on the navbar.
+                    </li>
+                    <li>
+                        Otherwise, if the user has logged in, then a dropdown link will show on the navbar,
+                        in which are two links: <b>Profile</b> and <b>Sign Out</b>
+                    </li>
+                    <li>
+                        Username: aliceW (asd@asd.com)
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/signin">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/signin"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (index.html) </h5>
+                <pre><code class="language-markup scroll-overflow">
+&lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+    &lt;li ng-show=&quot;currentUser==null&quot;&gt;
+        &lt;a href=&quot;#/signin&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon-log-in&quot;&gt;&lt;/span&gt; Sign In
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li ng-show=&quot;currentUser!=null&quot; class=&quot;dropdown&quot;&gt;
+        &lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-target=&quot;#&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt; Welcome, {{currentUser.username}}
+            &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;
+        &lt;/a&gt;
+        &lt;ul class=&quot;dropdown-menu&quot;&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#/profile&quot;&gt;
+                    &lt;span class=&quot;glyphicon glyphicon-info-sign&quot;&gt;&lt;/span&gt; Profile
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a ng-click=&quot;signout()&quot;&gt;
+                    &lt;span class=&quot;glyphicon glyphicon-log-out&quot;&gt;&lt;/span&gt; Logout
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <ol>
+                    <li>
+                        As shown, we use <code>ng-show="currentUser==null"</code> to make sure
+                        the link to <b>"#/signin"</b> only shows if the user are not logged in.
+                    </li>
+                    <li>
+                        Use <code>ng-show="currentUser!=null"</code> to make sure
+                        the link to <b>"#/profile"</b> and <b>Logout</b> only shows if the user
+                        has already logged in.
+                    </li>
+                    <li>
+                        Notice that the <b>Profile</b> page is protected by controller checking login state.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/002/index.html">index.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

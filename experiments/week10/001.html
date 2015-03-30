@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week10-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week10 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>UI - Redo Application Landing Page</h3>
+            <div>
+                This experiment focus on using bootstrap templates and tool kits to redesign the landing page
+                of our application. It also add a footer for on the page which shows across all the views.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, my application has a simple home page, which include
+                        a simple description of itself.
+                    </li>
+                    <li>
+                        We also defines a general footer shows across all the views, it basically shown the
+                        authorship of the webpage.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (home.html) </h5>
+                <pre><code class="language-markup scroll-overflow">
+&lt;div class=&quot;landing-header&quot;&gt;
+    &lt;h1 class=&quot;landing-header-title&quot;&gt;Application Name&lt;/h1&gt;
+    &lt;p&gt; Single-page application design in CS5610 - Web Development &lt;/p&gt;
+    &lt;p&gt; by Zhenming Shen &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2&quot;&gt;
+        &lt;div class=&quot;landing-info&quot;&gt;
+            &lt;h1 class=&quot;landing-info-title&quot;&gt;Lorem Ipsum&lt;/h1&gt;
+            &lt;p class=&quot;text-muted&quot;&gt;
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown took and pe specimen book.
+            &lt;/p&gt;
+            &lt;hr&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h5> - CSS Snippet (home.css) </h5>
+                <pre><code class="language-css scroll-overflow">
+.landing-header {
+    background: #567890 url(../resource/bg_header.jpg) no-repeat;
+    background-size: cover;
+    min-height: 380px;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    font-weight: 300;
+}
+
+.landing-header .landing-header-title {
+    font-size: 40px;
+}
+
+.landing-info {
+    text-align: center;
+}
+
+.landing-info .landing-info-title {
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.landing-info hr {
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+}
+                </code></pre>
+                <ol>
+                    <li>
+                        Interesting tip is that we can use these two classes: <code>col-md-8</code> and
+                        <code>col-md-offset-2</code> to make a centered <code>&lt;div&gt;</code> with
+                        in the current context.
+                    </li>
+                    <li>
+                        using <code>background</code> attribute to set the background color as well as
+                        the background image for the application home page, make sure the background image
+                        is wide enough to fill the whole window. Otherwise, the UI would be ugly.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/001/home.html">home.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/001/home.css">home.css</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.gettemplate.com/">
+                            GetTemplate - A Website Responsive HTML5 and CSS3 templates for rapid development
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

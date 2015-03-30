@@ -1,0 +1,28 @@
+.landing-header {
+    background: #567890 url(../resource/bg_header.jpg) no-repeat;
+    background-size: cover;
+    min-height: 380px;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    font-weight: 300;
+}
+
+.landing-header .landing-header-title {
+    font-size: 40px;
+}
+
+.landing-info {
+    text-align: center;
+}
+
+.landing-info .landing-info-title {
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.landing-info hr {
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+}

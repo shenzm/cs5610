@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week10-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week10 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>UI - Profile Page II</h3>
+            <div>
+                This experiment is based on the last experiments, it provide a right-col
+                of the profile page, it is a tab navigation panel, which can be used to
+                display more detailed user information.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        After logged in we can see the profile page of the user. The profile page consist
+                        of two part, we will focus on the right-col in this experiment.
+                    </li>
+                    <li>
+                        The right-col of the profile page is a tab panel which can be used to display
+                        multiple different content according to the active tab. I use AngularJS to
+                        implement this tab function.
+                    </li>
+                    <li>
+                        Username: aliceW (asd@asd.com)
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/profile">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week10/app1/#/profile"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (profile.html) </h5>
+                    <pre><code class="language-javascript scroll-overflow">
+&lt;div class=&quot;tab-bar&quot;&gt;
+    &lt;ul class=&quot;nav my-nav-tabs&quot; ng-init=&quot;activeTab = 'Profile'&quot;&gt;
+        &lt;li role=&quot;presentation&quot; ng-class=&quot;{active: activeTab == 'Profile'}&quot;&gt;
+            &lt;a ng-click=&quot;activeTab = 'Profile'&quot;&gt;Profile&lt;/a&gt;
+            &lt;span class=&quot;menu-active&quot;&gt;
+                &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/li&gt;
+    ...
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;tab-content&quot;&gt;
+    &lt;div ng-switch=&quot;activeTab&quot;&gt;
+        &lt;div role=&quot;tabpanel&quot; ng-switch-when=&quot;Profile&quot;&gt;
+            &lt;div class=&quot;panel panel-default&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div role=&quot;tabpanel&quot; ng-switch-when=&quot;Favorites&quot;&gt;Favorites&lt;/div&gt;
+        &lt;div role=&quot;tabpanel&quot; ng-switch-when=&quot;Friends&quot;&gt;Friends&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <ol>
+                    <li>
+                        Use <code>ng-init</code> to initialize a variable <b>activeTab</b> to "Profile", which
+                        will set the default tab to Profile tab.
+                    </li>
+                    <li>
+                        In the <code>&lt;ul&gt;</code> with class <b>my-nav-tabs</b>, pass an expression
+                        <b>"{active: activeTab == 'Profile'}"</b> to <code>ng-class</code>. which will set the
+                        class of the tag to <b>active</b> if the expression return true.
+                    </li>
+                    <li>
+                        And in the <code>&lt;div&gt;</code> with class <b>tab-content</b>, use <code>ng-switch</code>
+                        to switch between multiple sub <code>&lt;div&gt;</code> tags in which we set
+                        <code>ng-switch-when</code> variable accordingly.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week10/005/profile.html">profile.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>
