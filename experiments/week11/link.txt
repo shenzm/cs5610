@@ -1,0 +1,10 @@
+﻿  !title=Week11 Experiments List
+  !pagetitle=WEEK 11: Register Function and Bootstrap UI module
+  !comment=Links for each experiments:
+  !hr
+
+001.html        Register Page I - UI
+002.html        Register Page II - Controller Logic
+003.html        Register Page III - register API
+004.html        AngularJS and Bootstrap - Carousel
+005.html        AngularJS and Bootstrap - Tabs

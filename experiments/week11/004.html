@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week11-Exp4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week11 - Experiment4</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS and Bootstrap - Carousel</h3>
+            <div>
+                This experiment build up a welcome page for the newly register users to inform their
+                succeed registration. And it defines a image carousel that show user images that
+                related to the websites theme.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        If you already checked out the previous experiments, you probably already finds out
+                        the new user welcome page. This page is used to inform user that their registration
+                        has succeeded.
+                    </li>
+                    <li>
+                        Under the notification, it places a carousel of images. These images are images
+                        that related to the theme of the website, which works as a showcase that tells the newly
+                        registered user what the website does.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/welcome">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/welcome"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (index.html) </h5>
+                <pre><code class="language-markup scroll-overflow">
+&lt;script src=&quot;js/ui-bootstrap-tpls-0.12.1.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+                <ol>
+                    <li>
+                        Download the ui-bootstrap module of angularJS, and include the js file input the index.html
+                    </li>
+                </ol>
+                <h5> - HTML Snippet (welcome.html) </h5>
+                    <pre><code class="language-markup scroll-overflow">
+&lt;carousel interval=&quot;myInterval&quot;&gt;
+    &lt;slide ng-repeat=&quot;slide in slides&quot; active=&quot;slide.active&quot;&gt;
+        &lt;img ng-src=&quot;{{slide.image}}&quot;&gt;
+        &lt;div class=&quot;carousel-caption&quot;&gt;
+            &lt;h4&gt;{{slide.text}}&lt;/h4&gt;
+        &lt;/div&gt;
+    &lt;/slide&gt;
+&lt;/carousel&gt;</code></pre>
+                <ol>
+                    <li>
+                        Use customized <code>carousel</code> tag, and set the changing interval to variable <code>myInterval</code>
+                    </li>
+                    <li>
+                        Use customized <code>slide</code> tag, to enclose contents of a slide. Set the <code>ng-repeat</code>
+                        variable of the <code>slide</code> tag.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (WelcomeController.js) </h5>
+                    <pre><code class="language-javascript scroll-overflow">
+var welcomeController = angular.module("welcomeController", ['ui.bootstrap']);
+
+welcomeController.controller("WelcomeController",
+    function ($scope) {
+        $scope.myInterval = 4000;
+        $scope.slides = [
+            {
+                "image": "https://s3.amazonaws.com/zhenmins-public-img/welcome-food1.jpg",
+                "text": "Sesame chicken"
+            },
+            {
+                "image": "https://s3.amazonaws.com/zhenmins-public-img/welcome-food2.jpg",
+                "text": "Dallas Filet"
+            },
+            {
+                "image": "https://s3.amazonaws.com/zhenmins-public-img/welcome-food3.jpg",
+                "text": "Thin Crust Pizza"
+            }
+        ]
+    }
+);</code></pre>
+                <ol>
+                    <li>
+                        Set the changing interval to 4000ms, and define the slides array, which consist
+                        of an image and some description text.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/004.html">004.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/004/welcome.html">welcome.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/004/WelcomeController.js">WelcomeController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://angular-ui.github.io/bootstrap/">
+                            UI Bootsnipp - Bootstrap component written in pure AngularJS
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+    </div>
+</body>
+</html>

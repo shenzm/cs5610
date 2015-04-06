@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week11-Exp5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week11 - Experiment5</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>AngularJS and Bootstrap - Tabs</h3>
+            <div>
+                This experiment is an upgrade of last weeks experiments on tabs. And we provide a more user friendly
+                tab UI component.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        Log in first, so that you can check on the change on profile page.
+                    </li>
+                    <li>
+                        The tab component has been change to a more user friendly UI. And it also reduce
+                        the code size by using Bootstrap UI that implemented with pure AngularJS.
+                    </li>
+                    <li>
+                        Username: asd@asd.com
+                    </li>
+                    <li>
+                        Password: asd
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/profile">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/profile"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (profile.html) </h5>
+                    <pre><code class="language-markup scroll-overflow">
+&lt;div class=&quot;zhenmins-tab&quot; ng-controller=&quot;ProfileController&quot;&gt;
+    &lt;tabset&gt;
+        &lt;tab ng-repeat=&quot;tab in tabs&quot; heading=&quot;{{tab.title}}&quot; active=&quot;tab.active&quot;&gt;
+            {{tab.content}}
+        &lt;/tab&gt;
+    &lt;/tabset&gt;
+&lt;/div&gt;</code></pre>
+                <ol>
+                    <li>
+                        Use customized <code>tabset</code> tag to enclose a tab item.
+                    </li>
+                    <li>
+                        Define a <code>tab</code> tag and set its <code>ng-repeat</code> attribute, so it
+                        can iterate through a data list.
+                    </li>
+                </ol>
+                <h5> - Javascript Snippet (ProfileController.js) </h5>
+                        <pre><code class="language-javascript scroll-overflow">
+var profileController = angular.module("profileController", []);
+
+profileController.controller("ProfileController",
+function ($scope) {
+    $scope.tabs = [
+            { title:'Dynamic Title 1', content:'Dynamic content 1' },
+            { title:'Dynamic Title 2', content:'Dynamic content 2' }
+        ];
+    }
+);</code></pre>
+                <ol>
+                    <li>
+                        In the profile controller simply set the value of <code>$scope.tabs</code>, so the
+                        html page can iterate through and render this tabs one-by-one.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/005.html">005.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/005/profile.html">profile.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/005/ProfileController.js">ProfileController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/">
+                            Bootstrap - Guide
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

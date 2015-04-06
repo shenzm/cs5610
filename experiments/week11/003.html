@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week11-Exp3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week11 - Experiment3</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Register Page III - register API</h3>
+            <div>
+                This experiment focus on implementing the backend service API for register, which handles the
+                register request and insert new user entries into the database collection if the request is valid.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, user can register an account, which they can user to login
+                        the next time.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (server.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+app.post('/register', function (req, res){
+    UserModel.findOne({ email: req.body.email }, function (err, user) {
+        if (err) {
+            return res.json({"status": "Error"});
+        }
+        if (user) {
+            return res.json({"status": "Duplicate"});
+        }
+        else {
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            var newUser = new UserModel(req.body);
+            newUser.save(function (err) {
+                if(err) {
+                    return res.json({"status": "Error"});
+                }
+                else {
+                    return res.json({"status": "Success"});
+                }
+            });
+        }
+    });
+});</code></pre>
+                <ol>
+                    <li>
+                        Map the url <b>'/register'</b> to its handling function.
+                    </li>
+                    <li>
+                        In the request handling function, call function <code>UserModel.findOne</code> to find
+                        a user with the email that equals the input email. If error occurs, simply return
+                        a ERROR status. If user exist, means the account already exist, and return a DUPLICATE
+                        status. Otherwise call <code>newUser.save</code> to insert this user document into mongodb.
+                    </li>
+                    <li>
+                        During insertion of the new user, if error occurs, return ERROR status. Otherwise return
+                        status SUCCESS.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/003.html">003.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/003/server.js">server.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://codetheory.in/using-the-node-js-bcrypt-module-to-hash-and-safely-store-passwords/">
+                            bcrypt - A nodejs module for password encryption.
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<div class="container panel panel-default my-panel">
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <!-- Centering by using col-xx-offset-x -->
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <h3 class="thin text-center">Register a new account</h3>
+                <p class="text-center text-muted">Already have an account? <a href="#/signin">Login</a> now!</p>
+
+                <hr>
+
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+                            <input class="form-control" placeholder="Email Account" type="email"
+                                   ng-model="user.email" ng-change="clearWarning('email')" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input class="form-control" placeholder="Password" type="password"
+                                   ng-model="user.password" ng-change="clearWarning('password')" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input class="form-control" placeholder="Confirm Password" type="password"
+                                   ng-model="user.password2" ng-change="clearWarning('password')" required>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input ng-model="confirm" type="checkbox" required>
+                            <label>I've read the <a href="#/terms_conds">Terms and Conditions</a></label>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <button class="btn btn-success" type="submit"
+                                    ng-click="register(user, confirm)">Register</button>
+                        </div>
+                    </div>
+
+                    <hr ng-show="warnings != null">
+
+                    <div class="alert alert-warning" role="alert" ng-show="warnings != null">
+                        <p ng-repeat="w in warnings">{{w}}</p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

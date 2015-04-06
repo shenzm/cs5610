@@ -13,3 +13,4 @@
 #                                               WEEK 8: (Spring Break)
 ../story/index.htm?../experiments/week9/        WEEK 9: Authentication and Access Protection
 ../story/index.htm?../experiments/week10/       WEEK 10: UI revise and completing
+../story/index.htm?../experiments/week11/       WEEK 11: Register Function and Bootstrap UI module

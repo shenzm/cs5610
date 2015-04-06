@@ -8,3 +8,4 @@
 ../story/index.htm?../experiments/week7/          WEEK 7
 ../story/index.htm?../experiments/week9/          WEEK 9
 ../story/index.htm?../experiments/week10/         WEEK 10
+../story/index.htm?../experiments/week11/         WEEK 11

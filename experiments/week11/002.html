@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week11-Exp2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week11 - Experiment2</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Register Page II - Controller Logic</h3>
+            <div>
+                This experiment is based on the UI layout of the last experiments. And it adds the controller
+                logic for input validation as well as backend service API call to actually register the user account.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, after user type in all the required input field in
+                        the register form, then they can click the <b>register</b> button and the RegisterController
+                        will handle the form from then on.
+                    </li>
+                    <li>
+                        HTML5 already include some input validate, but RegisterController need to do more
+                        detailed input check before it actually calls the register API. For example, two input
+                        password must match.
+                    </li>
+                    <li>
+                        After calls the register API, the controller will get response from the server,
+                        and it may update the page with warning information on input data if the user account
+                        is not properly registered. Otherwise, it will redirect user to a welcome page.
+                    </li>
+                    <li>
+                        Notice that the warning will disappear if user changes the corresponding input field.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - Javascript Snippet (RegisterController.js) </h5>
+                <pre><code class="language-javascript scroll-overflow">
+registerController.controller("RegisterController", ["$scope", "$http", "$location",
+    function ($scope, $http, $location) {
+        var warningsField = null;
+        $scope.register = function (user, confirm) {
+            if (!user.email || !user.password || !confirm) {}
+            else if (user.password != user.password2) {
+                warningsField = "password";
+                $scope.warnings = ["Two password are not matched!"];
+            }
+            else {
+                console.log(user);
+                $http.post("/register", user)
+                    .success(function (response){
+                        if (response.status == "Error") {
+                            warningsField = "error";
+                            $scope.warnings = ["Register error, please try again later."];
+                        }
+                        else if (response.status == "Duplicate") {
+                            warningsField = "email";
+                            $scope.warnings = ["The Email has been registered, please try another one."];
+                        }
+                        else {
+                            $location.path("/welcome", user);
+                        }
+                    });
+            }
+        };
+        $scope.clearWarning = function (changedField) {
+            if(warningsField == changedField)
+                $scope.warnings = null;
+        };
+    }
+]);</code></pre>
+                <ol>
+                    <li>
+                        As shown, the controller filters the request if any of the following input field is
+                        not provide: email, password, confirm. After that it checks whether the two password
+                        provided in equal, and filter the request accordingly.
+                    </li>
+                    <li>
+                        It the input is valid, controller use <code>$http</code> to post the request to server's
+                        register API.
+                    </li>
+                    <li>
+                        The callback function of the POST request handle three different response status:
+                        1) Error 2) Duplicate 3) Success. It updates the <code>$scope.warning</code>, for first
+                        two status, and redirect user to welcome page for the last status.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/002.html">002.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/002/RegisterController.js">RegisterController.js</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://docs.angularjs.org/tutorial">
+                            AngularJS - Tutorial
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>

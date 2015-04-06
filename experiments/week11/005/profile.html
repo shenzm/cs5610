@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/week11/app1/css/profile.css">
+<link rel="stylesheet" href="/week11/app1/css/zhenmins-tabs.css">
+<div class="container panel panel-default my-panel">
+    <!--<div class="panel-body profile">-->
+    <div class="panel-body">
+        <h3 class="thin text-center">User Profile</h3>
+
+        <hr>
+
+        <div class="col-sm-3 left-col">
+            <!--<div class="panel panel-default">-->
+            <div>
+                <div class="header">
+
+                </div>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <img class="img-responsive thumbnail" src="http://placehold.it/300x300">
+                    </div>
+                    <div class="profile-summary">
+                        <p>
+                            FirstName: {{currentUser.firstName}}
+                        </p>
+                        <p>
+                            LastName: {{currentUser.lastName}}
+                        </p>
+                        <p>
+                            Email: {{currentUser.email}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9 right-col">
+            <div class="zhenmins-tab" ng-controller="ProfileController">
+                <tabset>
+                    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
+                        {{tab.content}}
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+</div>

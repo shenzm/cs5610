@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- To change -->
+    <title>Week11-Exp1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/experiments.css">
+    <script src="../js/prism.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- To change -->
+            <h3 class="text-muted">Week11 - Experiment1</h3>
+        </div>
+        <div class="jumbotron">
+            <h3>Register Page I - UI</h3>
+            <div>
+                Since we already create a Log in page in previous experiments.
+                This experiment focus on create a registration page for the website.
+            </div>
+        </div>
+        <div class="container-fluid experiment-items">
+            <h4>Experiment Description:</h4>
+            <p>
+                <ol>
+                    <li>
+                        As shown in the following iframe, user can jump to the register page by clicking the
+                        navigation link if they don't already have an account. Notice that they can also jump
+                        from the sign in page.
+                    </li>
+                    <li>
+                        The UI is really simple, it just contains three input field, which requires the user
+                        to input an Email address, a password and a password confirmation.
+                    </li>
+                </ol>
+            </p>
+            <h4>Experiment:</h4>
+            <p class="text-info"><small>Click button on top-left corner to view in new page</small></p>
+            <div style="position: relative">
+                <!-- To change -->
+                <a class="btn btn-default btn-sm btn-top-left" target="_blank"
+                   href="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </div>
+            <p>
+                <!-- To change -->
+                <iframe class="experiment-iframe" src="http://nodejsexp2-zhenmins.rhcloud.com/week11/app1/#/register"></iframe>
+            </p>
+            <h4>Operation Analysis:</h4>
+            <p>
+                <h5> - HTML Snippet (register.html) </h5>
+                <pre><code class="language-markup scroll-overflow">
+&lt;form&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;span class=&quot;input-group-addon&quot;&gt;
+                &lt;i class=&quot;glyphicon glyphicon-envelope&quot;&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;input class=&quot;form-control&quot; placeholder=&quot;Email Account&quot; type=&quot;email&quot;
+                    ng-model=&quot;user.email&quot; ng-change=&quot;clearWarning('email')&quot; required&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    ...
+
+    &lt;hr&gt;
+
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-sm-8&quot;&gt;
+            &lt;input ng-model=&quot;confirm&quot; type=&quot;checkbox&quot; required&gt;
+            &lt;label&gt;I've read the &lt;a href=&quot;#/terms_conds&quot;&gt;Terms and Conditions&lt;/a&gt;&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-sm-4 text-right&quot;&gt;
+            &lt;button class=&quot;btn btn-success&quot; type=&quot;submit&quot;
+                    ng-click=&quot;register(user, confirm)&quot;&gt;Register&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;hr ng-show=&quot;warnings != null&quot;&gt;
+
+    &lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot; ng-show=&quot;warnings != null&quot;&gt;
+        &lt;p ng-repeat=&quot;w in warnings&quot;&gt;{{w}}&lt;/p&gt;
+    &lt;/div&gt;
+
+&lt;/form&gt;</code></pre>
+                <ol>
+                    <li>
+                        The basic register form only consist of four input field: Email address, password and
+                        password confirmation. Notice that user have to click on the checkbox to confirm that
+                        they have read the <b>terms and conditions</b>
+                    </li>
+                    <li>
+                        There is also a <b>alert</b> &lt;div&gt; at the bottom of the page, which might shows
+                        after user submit an invalid registration form.
+                    </li>
+                </ol>
+            </p>
+            <hr />
+            <h4>Source Code Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/001.html">001.html</a>
+                    </li>
+                    <li>
+                        <a href="../../fileview/Default.aspx?~/experiments/week11/001/register.html">register.html</a>
+                    </li>
+                </ul>
+            </p>
+            <h4>Reference Links: </h4>
+            <!-- To change -->
+            <p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://bootsnipp.com/">
+                            Bootsnipp - A Website For Bootstrap related UI snippet
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.gettemplate.com/">
+                            GetTemplate - A Website Responsive HTML5 and CSS3 templates for rapid development
+                        </a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="footer container-fluid">
+            <p>© Zhenming Shen 2015</p>
+        </div>
+
+
+    </div>
+</body>
+</html>
