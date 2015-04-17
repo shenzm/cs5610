@@ -1,45 +1,170 @@
-﻿* {
+﻿/* ------------------Font---------------------- */
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(DroidSans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(DroidSansBold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url(RobotoSlabLight.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(RobotoSlabRegular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(RobotoSlabBold.woff) format('woff');
+}
+
+/* -------------------------------------------- */
+
+* {
     box-sizing: border-box;
 }
 
 body{
-    padding-top: 70px;
-    font-family: Verdana;
+    font-family: 'Roboto Slab',sans-serif;
     color: #566675;
+    background-color: #F5F5F5;
+}
+
+.main-frame
+{
+    background-color: rgba(88, 141, 179, 0.8);
+    padding-top: 70px;
+    color: #ffffff;
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+}
+
+.box {
+    clear: both;
+    height: 10px;
+}
+
+.nav-frame {
+    background-color: rgba(67, 106, 142, 0.88);
+    padding-top: 0;
+    color: #ffffff;
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .nav-frame {
+        display: none;
+    }
+
+    .main-frame {
+        padding-top: 80px;
+    }
+}
+
+.nav-frame p {
+    margin-top: 0;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.utilities-frame {
+    background-color: transparent;
+    padding-top: 0;
+    height: 100%;
+    color: #111111;
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+}
+
+.main-frame .img-thumbnail {
+    width: 150px; height: 150px;
+    background:#fff;
+	padding:3px;
+}
+
+#utilities {
+    text-align: center;
 }
 
 a {
-    color: #348FB7;
+    color: #276480;
     text-decoration: none;
 }
 
 a:hover {
-    color: #A3C2DD;
+    color: #cccccc;
     text-decoration: none;
 }
 
 .zhenmins-container {
-    padding-left: 15px;
-    padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
 }
 
 @media (min-width: 768px) {
     .zhenmins-container {
         width: 750px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
+
+    .main-frame .img-thumbnail {
+        width: 200px; height: 200px
+    }
+
+    .main-frame {
+        font-size: 16px;
+    }
+
 }
 
 @media (min-width: 992px) {
     .zhenmins-container {
         width: 970px;
     }
+
+    .main-frame .img-thumbnail {
+        width: 200px; height: 200px
+    }
+
+    .main-frame {
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 1170px) {
     .zhenmins-container {
         width: 1170px;
+    }
+
+     .main-frame .img-thumbnail {
+        width: 200px; height: 200px
+    }
+
+    .main-frame {
+        font-size: 16px;
     }
 }
 
@@ -180,8 +305,8 @@ a:hover {
     position: relative;
     min-height: 50px;
     margin-bottom: 20px;
-    background-color: #EDF6FE;
-    border-bottom: 1px solid #CAE0F4;
+    background-color: #FFFFFF;
+    border-bottom: 5px solid rgba(192, 192, 192, 0.31);
 }
 
 .zhenmins-nav-fixed-top {
@@ -189,16 +314,15 @@ a:hover {
     top: 0;
     left: 0;
     right: 0;
-    border-width: 0 0 1px;
-      z-index: 1030;
+    z-index: 10;
 }
 
 .zhenmins-nav-header {
     float: left;
     padding: 12px 12px;
-    font-family: Georgia;
-    font-size: 23px;
-    font-weight: bold;
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -221,6 +345,10 @@ a:hover {
         display: none;
     }
 
+    .zhenmins-nav-header {
+        font-size: 23px;
+    }
+
     #home-nav-bottom {
         display: none;
     }
@@ -237,7 +365,7 @@ a:hover {
 }
 
 .zhenmins-nav-body {
-    float: left;
+    float: right;
 }
 
 .nav-list, 
@@ -254,9 +382,10 @@ a:hover {
 .nav-list > li > a,
 .nav-list-bottom > li > a {
     text-decoration: none;
-    color:  #566675;
+    color:  #2a323a;
     padding: 15px 15px;
-    font-family: Georgia;
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
     font-size: 17px;
 }
 
@@ -275,12 +404,14 @@ a:hover {
 }
 
 .zhenmins-nav-redirect {
+    font-family: 'Roboto Slab',sans-serif;
+    font-weight: 400;
     float: right;
 }
 
 .panel {
     margin: 0px;
-    border: solid 1px #CAE0F4;
+    border: 1px solid rgb(230, 230, 230);
 }
 
 .panel > .panel-heading {
@@ -290,7 +421,7 @@ a:hover {
     margin: 0px;
     padding: 10px;
     background-color: #EDF6FE;
-    border-bottom: 1px solid #CAE0F4;
+    border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 .panel > .panel-body {
@@ -313,7 +444,6 @@ a:hover {
     margin-bottom: -1px;
     padding: 10px 15px;
     list-style: none;
-    border: 1px solid #CAE0F4
 }
 
 .panel-body > .list-group {
@@ -333,4 +463,65 @@ a:hover {
 
 .panel-body>.list-group .list-group-item:first-child {
     border-top: 0px;
+}
+
+.utility-header {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    margin: 0 auto;
+    display: table;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.44);
+}
+
+.utility-list {
+    list-style: none;
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+.utility-item {
+    padding: 0;
+    padding-left: 5px ;
+    padding-right: 5px ;
+    /*display: inline-block;*/
+}
+
+@media (min-width: 768px) {
+    .utility-item {
+        display: inline-block;
+    }
+
+    .utilities-second-list {
+        display: none;
+    }
+}
+
+.utility-item a {
+    color: rgba(125, 181, 221, 1);
+    padding: 0;
+    padding-left: 10px ;
+    padding-right: 10px ;
+}
+
+.utility-item a:hover {
+    color: #eee;
+}
+
+.utilities-frame .utility-item a {
+    font-size: 14px;
+    color: #2A323A;
+}
+
+.utilities-frame .utility-item a:hover {
+    color: rgba(125, 181, 221, 1);
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
 }

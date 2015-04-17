@@ -21,5 +21,4 @@ businessApp.config(['$routeProvider',
             otherwise({
                 redirectTo: '/'
             });
-    }
-]);
+    }]);
