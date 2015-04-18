@@ -1,0 +1,21 @@
+body {
+    font-family: Lora,'Times New Roman',serif;
+    font-size: 20px;
+    color: #404040;
+    background-color: #e6e6e6;
+}
+
+h2 {
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #4e4e4e;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+img {
+    padding: 10px;
+    border: 1px solid #888888;
+}

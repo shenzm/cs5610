@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="../css/profile.css">
+<link rel="stylesheet" href="../css/zhenmins-tabs.css">
+<link rel="stylesheet" href="../css/zhenmins-item.css">
+<div class="container">
+    <div class="panel-body">
+        <h3 class="thin text-center">User Profile</h3>
+        <hr>
+
+        <div class="profile">
+            <div class="col-xs-12 col-sm-3">
+                <div class="my-namecard">
+                    <div class="my-thumbnail">
+                        <img class="center-block" ng-src="{{currentUser.img_url || 'http://placehold.it/300x300' }}">
+                    </div>
+                    <div class="my-summary">
+                        <ul>
+                            <li>
+                                <h4 class="header">{{currentUser.username}}</h4>
+                            </li>
+                            <li>
+                                <Span class="glyphicon glyphicon-user"></Span>
+                                {{currentUser.firstname}} {{currentUser.lastname}}
+                            </li>
+                            <li>
+                                <Span class="glyphicon glyphicon-envelope"></Span>
+                                {{currentUser.email}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="operations">
+                        <a class="btn operation" href="#/profile_edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-9">
+                <div class="zhenmins-tab">
+                    <tabset>
+                        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
+                            <div ng-switch="tab.title">
+                                <ul class="zhenmins-item-list" ng-switch-when="Favorites">
+                                    <li ng-repeat="item in tab.content">
+                                        <div class="item">
+                                            <div class="item-thumbnail">
+                                                <img class="center-block" ng-src="{{item.thumbnail}}">
+                                            </div>
+                                            <ul class="item-info">
+                                                <li>{{item.title}}</li>
+                                                <li> - {{item.authors_string}}</li>
+                                                <li> - {{item.categories_string}}</li>
+                                                <li> - Rating: {{item.averageRating}} ({{item.ratingsCount}} votes)</li>
+                                            </ul>
+                                            <div class="operations">
+                                                <a class="btn operation" ng-click="viewDetail(item.id)">
+                                                    <span class="glyphicon glyphicon-new-window"></span>
+                                                </a>
+                                                <a class="btn operation" ng-click="removeFavorite(item.id)">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="zhenmins-item-list" ng-switch-when="Friends">
+                                    <li ng-repeat="item in tab.content">
+                                        <div class="item">
+                                            <div class="item-thumbnail">
+                                                <img class="center-block" ng-src="{{item.img_url}}">
+                                            </div>
+                                            <ul class="item-info">
+                                                <li>{{item.username}}</li>
+                                                <li> - {{item.firstname}} {{item.lastname}}</li>
+                                                <li> - {{item.email}}</li>
+                                            </ul>
+                                            <div class="operations">
+                                                <a class="btn operation" ng-click="viewOthersProfile(item._id)">
+                                                    <span class="glyphicon glyphicon-new-window"></span>
+                                                </a>
+                                                <a class="btn operation" ng-click="removeFriends(item._id)">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

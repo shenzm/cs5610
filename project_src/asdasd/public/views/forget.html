@@ -1,0 +1,46 @@
+<div class="container panel panel-default my-panel">
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <!-- Centering by using col-xx-offset-x -->
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <h3 class="thin text-center">Reset your password</h3>
+                <p class="text-center text-muted">No account yet? <a href="#/register">Register</a> now!</p>
+
+                <hr>
+
+                <form>
+                    <p class="text-default"> Input your registered email here:</p>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+                            <input class="form-control" placeholder="Email Account" type="text"
+                                   ng-model="user.email" ng-change="clearWarning()" autofocus required>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <button class="btn btn-success" type="submit"
+                                    ng-click="resetPassword(user.email)">Reset</button>
+                        </div>
+                    </div>
+
+                    <hr ng-show="warnings != null">
+
+                    <div class="alert alert-warning" role="alert" ng-show="warnings != null">
+                        <p ng-repeat="w in warnings">{{w}}</p>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,8 +23,8 @@
             <div class="zhenmins-nav-body" id="home-nav-body">
                 <ul class="nav-list">
                     <li><a href="story/index.htm?../experiments/" target="_blank">Experiements</a></li>
-                    <li><a href="#" target="_blank">Project</a></li>
-                    <li><a href="#" target="_blank">Documentation</a></li>
+                    <li><a href="http://myapp-zhenmins.rhcloud.com/#/" target="_blank">Project</a></li>
+                    <li><a href="story/index.htm?../project_doc/" target="_blank">Documentation</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +37,8 @@
             <p>This is my demo home page for CS5610 - Web Development.</p>
             <p>In this course, I gained strong knowledge of front&back-end technologies.</p>
             <p>And I adopt MEAN stack for my single-page app project.</p>
-            <p class="git-link">Git repo: <a target="_blank" href="https://github.com/shenzm/cs5610.git">click here</a></p>
+            <p>Git repo: <a target="_blank" href="https://github.com/shenzm/cs5610.git">click here</a></p>
+            <p style="color: rgba(161, 19, 5, 0.85)">Project Source Code is located in the "/project_src" directory of the above Git Repo</p>
         </div>
         <div class="box"></div>
     </div>
@@ -47,8 +48,8 @@
             <p class="utility-header"> Navigation Links: </p>
             <ul class="utility-list">
                 <li class="utility-item"><a href="story/index.htm?../experiments/" target="_blank">Experiements</a></li>
-                <li class="utility-item"><a href="#" target="_blank">Project</a></li>
-                <li class="utility-item"><a href="#" target="_blank">Documentation</a></li>
+                <li class="utility-item"><a href="http://myapp-zhenmins.rhcloud.com/#/" target="_blank">Project</a></li>
+                <li class="utility-item"><a href="story/index.htm?../project_doc/" target="_blank">Documentation</a></li>
             </ul>
         </div>
         <div class="box"></div>

@@ -1,0 +1,66 @@
+.book-detail img {
+    padding: 5px;
+    border: 1px solid #2C3E50;
+    width: 150px;
+}
+
+.book-detail .favorite-btn {
+    border-top: 0;
+    width: 150px;
+    text-align: center;
+}
+
+.book-detail .favorite-btn a {
+    line-height: 40px;
+    height: 40px;
+    color: #ffffff;
+    background-color: #2C3E50;
+}
+
+.book-detail .favorite-btn a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #18bc9c;
+}
+
+.book-detail dl,
+.book-reviews dl
+{
+    padding: 15px 0;
+    margin : 0;
+}
+
+@media (min-width: 768px) {
+
+    .book-detail dl dt,
+    .book-reviews dl dt
+    {
+        width: 120px;
+        text-align: left;
+    }
+
+    .book-detail dl dd,
+    .book-reviews dl dd
+    {
+        margin-left: 140px;
+        text-align: left;
+    }
+}
+
+.book-reviews li {
+    background-color: #ECF0F1;
+    margin-bottom: 15px;
+}
+
+.book-reviews li:last-child {
+    margin-bottom: 0;
+}
+
+.user_link:hover {
+    cursor: pointer;
+}
+
+.no-x-padding {
+    padding-left: 0;
+    padding-right: 0;
+}

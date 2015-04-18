@@ -1,0 +1,33 @@
+/* nav-tabs */
+
+.zhenmins-tab .nav-tabs {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.zhenmins-tab .nav-tabs>li>a,
+.zhenmins-tab .nav-tabs>li>a:focus,
+.zhenmins-tab .nav-tabs>li>a:hover
+{
+    margin: 0;
+    border: 0;
+    color: #2c3e50;
+    background-color: transparent;
+}
+
+.zhenmins-tab .nav-tabs>li>a:hover {
+    border-radius: 0;
+    border-bottom: 4px solid rgba(138, 199, 251, 0.26);
+}
+
+.zhenmins-tab .nav-tabs>li.active>a,
+.zhenmins-tab .nav-tabs>li.active>a:focus,
+.zhenmins-tab .nav-tabs>li.active>a:hover
+{
+    border-bottom: 4px solid #2c3e50;
+}
+
+/* tab-content */
+
+.zhenmins-tab .tab-content {
+    padding: 10px 0;
+}

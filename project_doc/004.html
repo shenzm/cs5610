@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Book Detail and Book Review </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="doc.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <h2 class="text-center"> Book Detail and Book Review </h2>
+
+            <hr>
+
+            <p>
+                From the book search page, or other pages that contains a sketch of a book, user can
+                always click the "new-window" button to open the book's detail page.
+                <img class="img-responsive" src="../images/project_doc_img/book-detail-button.png">
+            </p>
+
+            <ul class="list-unstyled">
+
+                <li>
+                    <p>
+                        <strong> Book Detail Information: </strong>
+                        The details page shows fine-grained information of the selected book on the top, and
+                        user can "favorite" the book by clicking "Favorite" button under the thumbnail of the book.
+                    </p>
+
+                    <img class="img-responsive" src="../images/project_doc_img/book-detail-info.png">
+                </li>
+
+                <li>
+                    <p>
+                        <strong> Review Section: </strong>
+                        Under the book information is a list of book reviews for book, and a review form where
+                        user can submit their own reviews for the book. Notice that only user already logged in can
+                        submit a review. Otherwise they will be redirected to log in page.
+                    </p>
+
+                    <img class="img-responsive" src="../images/project_doc_img/book-detail-review.png">
+                </li>
+
+                <li>
+                    <p>
+                        <strong> User Recommend Section: </strong>
+                        At the bottom of the book detail page, a list of user and the tile of their favorite books
+                        is displayed. So user can find other users with similar reading taste, and checkout
+                        their profiles and add them as friends at their profile page.
+                    </p>
+
+                    <img class="img-responsive" src="../images/project_doc_img/book-detail-other.png">
+                </li>
+
+            </ul>
+
+            <hr>
+
+            <p>Source Links: </p>
+            <ol>
+                <li>
+                    <a href="../fileview/Default.aspx?~/project_src/myapp/public/views/book_detail.html">
+                        myapp/public/views/book_detail.html
+                    </a>
+                </li>
+                <li>
+                    <a href="../fileview/Default.aspx?~/project_src/myapp/public/js/controllers/BookDetailController.js">
+                        myapp/public/js/controllers/BookDetailController.js
+                    </a>
+                </li>
+            </ol>
+
+        </div>
+    </div>
+
+</body>
+</html>

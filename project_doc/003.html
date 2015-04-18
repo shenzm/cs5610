@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Book Search </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="doc.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <h2 class="text-center"> Book Search </h2>
+
+            <hr>
+
+            <p>
+                By clicking the book search link on the navigation bar, user can jump to the book search page.
+                User can use the search function to search their book of interest. They can either specify a
+                general search on all book attribute or perform a specific search on particular book attributes
+                such as title, author.
+            </p>
+
+            <ul class="list-unstyled">
+
+                <li>
+                    <p>
+                        <strong> Search Form </strong>
+                        As show in the following screen shot, the search form consist of an input field and a
+                        selection drop-down input field. By leaving the selection field blank, user can perform
+                        a general search. Otherwise, if the user choose a specific attribute, they can also
+                        search on that particular attribute.
+                    </p>
+
+                    <img class="img-responsive" src="../images/project_doc_img/search.png">
+                </li>
+
+                <li>
+                    <p>
+                        <strong> Search Pager: </strong>
+                        The search result will be displayed under the search form in list of maximum 10 books.
+                        After the search button is clicked the controller will send an AJAX call to Google Books
+                        API and retrieve book information. And the first time, only the first 10 books will be
+                        returned if there are more than 10 books in the result set. After that, user can always
+                        navigate through different pages of the book search result.
+                    </p>
+
+                    <img class="img-responsive" src="../images/project_doc_img/search-pager.png">
+                </li>
+
+            </ul>
+
+            <p>
+                Notice that the styling of ReadiBook is based on bootstrap. And it uses the "flaty" theme of bookstrap.
+            </p>
+
+            <hr>
+
+            <p>Source Links: </p>
+            <ol>
+                <li>
+                    <a href="../fileview/Default.aspx?~/project_src/myapp/public/views/books.html">
+                        myapp/public/views/books.html
+                    </a>
+                </li>
+                <li>
+                    <a href="../fileview/Default.aspx?~/project_src/myapp/public/js/controllers/BooksController.js">
+                        myapp/public/js/controllers/BooksController.js
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="panel-body">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <!-- Centering by using col-xx-offset-x -->
+            <h3 class="thin text-center">Register new account</h3>
+            <p class="text-center text-muted">Already have an account? <a href="#/signin">Login</a> now!</p>
+
+            <hr>
+
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                        </span>
+                        <input class="form-control" placeholder="Email Account" type="email"
+                               ng-model="user.email" ng-change="clearWarning('email')" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="First Name" type="text"
+                               ng-model="user.firstname" ng-change="" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Last Name" type="text"
+                               ng-model="user.lastname" ng-change="" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Nickname" type="text"
+                               ng-model="user.username" ng-change="" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input class="form-control" placeholder="Password" type="password"
+                               ng-model="user.password" ng-change="clearWarning('password')"
+                               minlength="6" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input class="form-control" placeholder="Confirm Password" type="password"
+                               ng-model="user.passwordConfirm" ng-change="clearWarning('password')"
+                               minlength="6" required>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <input ng-model="confirm" type="checkbox" required>
+                        <label>I've read the <a href="#/terms_conds">Terms and Conditions</a></label>
+                    </div>
+                    <div class="col-sm-12 col-md-4 text-right">
+                        <button class="btn btn-success" type="submit"
+                                ng-click="register(user, confirm)">Register</button>
+                    </div>
+                </div>
+
+                <hr ng-show="warnings != null">
+
+                <div class="alert alert-warning" role="alert" ng-show="warnings != null">
+                    <p ng-repeat="w in warnings">{{w}}</p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

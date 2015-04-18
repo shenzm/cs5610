@@ -1,0 +1,12 @@
+﻿../story/whatisnext.htm?../project_doc/story.txt        What is next
+../project_doc/001.html                                 Section 1 - Project Overview
+../project_doc/002.html                                 Section 2 - Landing Page and Navigation Bar
+../project_doc/003.html                                 Section 3 - Book Search
+../project_doc/004.html                                 Section 4 - Book Details and Book Reviews
+../project_doc/005.html                                 Section 5 - Favorite Books and Follow Users
+../project_doc/006.html                                 Section 6 - User Register and User Login
+../project_doc/007.html                                 Section 7 - User profile
+../project_doc/008.html                                 Section 8 - User profile update
+../project_doc/009.html                                 Section 9 - Others profile
+../project_doc/010.html                                 Section 10 - MongoDB Collections
+../project_doc/011.html                                 Section 11 - Technologies

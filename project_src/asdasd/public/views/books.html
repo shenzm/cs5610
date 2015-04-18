@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/css/zhenmins-item.css">
+<link rel="stylesheet" href="/css/zhenmins-books.css">
+<div class="container">
+    <div class="panel-body">
+        <div class="col-xs-12">
+
+            <h3 class="thin text-center">Search for a book</h3>
+            <p class="text-center text-muted">
+                Using google book API
+            </p>
+            <div class="col-sm-6 col-sm-offset-3 input-group">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Title, Author, Publisher, Subject, ISBN" type="text"
+                                   ng-model="searchInput" required>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" ng-click="searchBooks(searchInput, selectedItem)">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <label for="attribute">
+                            Search on:
+                        </label>
+                        <select class="form-control" id="attribute" ng-model="selectedItem">
+                            <option ng-repeat="opt in options" value="{{opt}}">{{opt}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <nav>
+                <ul class="pager" ng-show="currentSearchInput!=null">
+                    <li><button class="btn btn-default" ng-click="previousPage()">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button></li>
+                    <li>
+                        <span class="zhenmins-page-number">{{currentPage}}</span>
+                    </li>
+                    <li><button class="btn btn-default" ng-click="nextPage()">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button></li>
+                </ul>
+            </nav>
+
+            <hr>
+
+            <div ng-show="waitingResult">
+                <img class="center-block"
+                     src="https://s3.amazonaws.com/zhenmins-public-img/loading.GIF">
+            </div>
+
+            <ul class="zhenmins-item-list">
+                <li ng-repeat="item in searchResult">
+                    <div class="item">
+                        <div class="item-thumbnail">
+                            <img class="center-block" ng-src="{{item.volumeInfo.imageLinks.thumbnail}}">
+                        </div>
+                        <ul class="item-info">
+                            <li>{{item.volumeInfo.title}}</li>
+                            <li> - {{item.volumeInfo.authors_string}}</li>
+                            <li> - {{item.volumeInfo.categories_string}}</li>
+                            <li> - Rating: {{item.volumeInfo.averageRating}} ({{item.volumeInfo.ratingsCount}} votes)</li>
+                        </ul>
+                        <div class="operations">
+                            <a class="btn operation" ng-click="viewDetail(item.id)">
+                                <span class="glyphicon glyphicon-new-window"></span>
+                            </a>
+                            <a class="btn operation pop-hint" ng-click="addFavorite(item.id, item.volumeInfo, $index)"
+                               data-toggle="popover" data-placement="left"
+                               data-content="Adding this book to your favorites..."
+                               id="pop-hint-{{$index}}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
