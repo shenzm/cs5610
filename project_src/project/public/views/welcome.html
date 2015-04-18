@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/zhenmins-carousel.css">
+<div class="container">
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <!-- Centering by using col-xx-offset-x -->
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <h3 class="thin text-center">Welcome to MyApp</h3>
+                <p class="text-center">
+                    Enrich your <a href="#/profile">Profile</a> now!
+                    Or skip and go to <a href="#/books">Book Search</a> page</p>
+
+                <hr>
+
+                <div class="welcome-carousel">
+                    <carousel interval="myInterval">
+                        <slide ng-repeat="slide in slides" active="slide.active">
+                            <img ng-src="{{slide.image}}">
+                            <div class="carousel-caption">
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
